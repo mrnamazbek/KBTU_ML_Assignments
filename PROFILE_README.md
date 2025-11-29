@@ -404,30 +404,16 @@ Extract  Stream  Orchestrate Load
 
 <div align="center">
 
-<table>
-<tr>
-<td width="50%" align="center">
-  
-**📈 Profile Stats**
-  
-<img src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9" width="100%"/>
-
-</td>
-<td width="50%" align="center">
-
-**💻 Top Languages**
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9" width="100%"/>
-
-</td>
-</tr>
-</table>
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&theme=tokyonight&hide_border=true" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&theme=tokyonight&hide_border=true" />
+</a>
 
 <br/>
 
-**🔥 Contribution Streak**
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=mrnamazbek&hide_border=true&background=0D1117&stroke=00F7F7&ring=00F7F7&fire=FF6E00&currStreakLabel=00F7F7" width="65%"/>
+<a href="https://github.com/ashutosh00710/github-readme-streak-stats">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mrnamazbek&theme=tokyonight&hide_border=true" />
+</a>
 
 <br/><br/>
 
@@ -514,7 +500,7 @@ Extract  Stream  Orchestrate Load
 <tr>
 <td align="center">
 
-```ascii
+```text
 ╔════════════════════════════════════════════════════════════════╗
 ║                                                                ║
 ║  "Code is poetry. Data tells stories.                          ║
