@@ -144,33 +144,47 @@ if __name__ == "__main__":
 
 ## 🎨 Data Engineering Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     DATA PIPELINE ECOSYSTEM                         │
-└─────────────────────────────────────────────────────────────────────┘
+<div align="center">
 
-    📊 DATA SOURCES                🔄 PROCESSING              📦 STORAGE
-         │                              │                         │
-    ┌────▼─────┐                   ┌────▼─────┐             ┌────▼─────┐
-    │  APIs    │──────────────────▶│  Spark   │────────────▶│PostgreSQL│
-    │Databases │                   │  Hadoop  │             │  Oracle  │
-    │  Kafka   │                   │ Airflow  │             │  S3/HDFS │
-    └──────────┘                   └──────────┘             └──────────┘
-         │                              │                         │
-         │                         ┌────▼─────┐                   │
-         └────────────────────────▶│Transform │───────────────────┘
-                                   │ Cleanse  │
-                                   │ Validate │
-                                   └──────────┘
-
-    🤖 ML PIPELINE                 🎯 DEPLOYMENT            📊 MONITORING
-         │                              │                         │
-    ┌────▼─────┐                   ┌────▼─────┐             ┌────▼─────┐    
-    │ Sklearn  │                   │ FastAPI  │             │ Grafana  │
-    │TensorFlow│──────────────────▶│  Docker  │────────────▶│Prometheus│
-    │ PyTorch  │                   │Kubernetes│             │  Logs    │
-    └──────────┘                   └──────────┘             └──────────┘
+```mermaid
+graph TD;
+    subgraph DATA_SOURCES
+    A[APIs] --> B[Spark]
+    C[Databases] --> B
+    D[Kafka] --> B
+    end
+    
+    subgraph PROCESSING
+    B --> E[Transform]
+    E --> F[Cleanse]
+    F --> G[Validate]
+    end
+    
+    subgraph STORAGE
+    G --> H[PostgreSQL]
+    G --> I[Oracle]
+    G --> J[S3/HDFS]
+    end
+    
+    subgraph ML_PIPELINE
+    K[Sklearn] --> L[FastAPI]
+    M[TensorFlow] --> L
+    N[PyTorch] --> L
+    end
+    
+    subgraph DEPLOYMENT
+    L --> O[Docker]
+    O --> P[Kubernetes]
+    end
+    
+    subgraph MONITORING
+    P --> Q[Grafana]
+    P --> R[Prometheus]
+    P --> S[Logs]
+    end
 ```
+
+</div>
 
 <br/>
 
@@ -253,15 +267,12 @@ if __name__ == "__main__":
 </details>
 
 <details open>
-<summary><b>🎨 IDEs & Editors</b></summary>
-<br/>
-
 <div align="center">
 
-![PyCharm](https://img.shields.io/badge/PyCharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=green)
-![DataGrip](https://img.shields.io/badge/DataGrip-000000?style=for-the-badge&logo=datagrip&logoColor=white)
-![DataSpell](https://img.shields.io/badge/DataSpell-000000?style=for-the-badge&logo=dataspell&logoColor=white)
-![DBeaver](https://img.shields.io/badge/DBeaver-382923?style=for-the-badge&logo=dbeaver&logoColor=white)
+![PyCharm](https://img.shields.io/badge/PyCharm-21D789?style=for-the-badge&logo=pycharm&logoColor=white)
+![DataGrip](https://img.shields.io/badge/DataGrip-DB3BDA?style=for-the-badge&logo=datagrip&logoColor=white)
+![DataSpell](https://img.shields.io/badge/DataSpell-9775FA?style=for-the-badge&logo=datascience&logoColor=white)
+![DBeaver](https://img.shields.io/badge/DBeaver-372923?style=for-the-badge&logo=dbeaver&logoColor=white)
 ![Cursor](https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white)
 ![Antigravity](https://img.shields.io/badge/Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
@@ -389,23 +400,40 @@ Extract  Stream  Orchestrate Load
 <!-- Glowing Divider -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 📊 GitHub Performance Metrics
+## 📊 GitHub Analytics Dashboard
 
 <div align="center">
 
-<!-- Stats Cards -->
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9"/>
+<table>
+<tr>
+<td width="50%" align="center">
+  
+**📈 Profile Stats**
+  
+<img src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9" width="100%"/>
 
-</div>
+</td>
+<td width="50%" align="center">
 
-<div align="center">
+**💻 Top Languages**
 
-<!-- Contribution Streak -->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=mrnamazbek&theme=algolia&hide_border=true&background=0D1117&stroke=00F7F7&ring=00F7F7&fire=FF6E00&currStreakLabel=00F7F7" width="49%"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9" width="100%"/>
 
-<!-- Activity Graph -->
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=mrnamazbek&theme=react-dark&hide_border=true&area=true&bg_color=0D1117&color=00F7F7&line=00F7F7&point=FFFFFF" width="100%"/>
+</td>
+</tr>
+</table>
+
+<br/>
+
+**🔥 Contribution Streak**
+
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=mrnamazbek&hide_border=true&background=0D1117&stroke=00F7F7&ring=00F7F7&fire=FF6E00&currStreakLabel=00F7F7" width="65%"/>
+
+<br/><br/>
+
+**📉 Contribution Activity**
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=mrnamazbek&theme=react-dark&hide_border=true&area=true&bg_color=0D1117&color=00F7F7&line=00F7F7&point=FFFFFF" width="95%"/>
 
 </div>
 
@@ -414,55 +442,102 @@ Extract  Stream  Orchestrate Load
 <!-- Glowing Divider -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 🌐 Connect & Collaborate
+<br/>
+
+## 🤝 Let's Connect!
 
 <div align="center">
 
-<!-- Social Badges -->
+<table>
+<tr>
+<td align="center" width="33%">
+
+### 💼 Professional
+
 <a href="https://www.linkedin.com/in/namazbek-bekzhanov/">
-  <img src="https://img.shields.io/badge/LinkedIn-Let's_Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" height="35"/>
 </a>
+
+**Connect & Network**
+
+</td>
+<td align="center" width="33%">
+
+### 📧 Direct Contact
+
 <a href="mailto:namazbekzhan@gmail.com">
-  <img src="https://img.shields.io/badge/Gmail-Send_Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+<img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" height="35"/>
 </a>
+
+**Email Me Anytime**
+
+</td>
+<td align="center" width="33%">
+
+### 📱 Social
+
 <a href="https://instagram.com/namazbekzhan">
-  <img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+<img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" height="35"/>
 </a>
 
+**Follow My Journey**
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+### 💭 Daily Inspiration
+
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=algolia&border=true" width="600"/>
+
 <br/><br/>
 
-<!-- Dynamic Quote -->
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=algolia&border=true" width="550"/>
-
----
-<br/><br/>
-
-<!-- Profile Views Counter -->
 <img src="https://komarev.com/ghpvc/?username=mrnamazbek&label=Profile%20Visitors&color=00F7F7&style=for-the-badge" alt="Profile views" />
 
 </div>
 
 <br/>
 
+<!-- Glowing Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
 <!-- Philosophy Section -->
 <div align="center">
-  
-### 💭 Engineering Philosophy
 
-```
-┌────────────────────────────────────────────────┐
-│  "Code is poetry. Data tells stories.          │
-│   I write both with precision and passion."    │
-│                                                │
-│   ⚙️  Code • ⚽ Captain • 🚀 Innovate           │
-└────────────────────────────────────────────────┘
+## 🎯 My Engineering Mantra
+
+<table>
+<tr>
+<td align="center">
+
+```ascii
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║  "Code is poetry. Data tells stories.                          ║
+║   I write both with precision and passion."                    ║
+║                                                                ║
+║  ⚙️  Architect  •  ⚽  Captain  •  🚀  Innovator               ║
+║                                                                ║
+║  🎓 Forever Learning  •  💡 Always Building  •  🔥 Never Quit  ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
 ```
 
-<sub>Engineer of my own destiny. Built different. Chasing greatness.</sub>
+<br/>
+
+**✨ Engineer of my own destiny. Built different. Chasing greatness. ✨**
+
+</td>
+</tr>
+</table>
 
 </div>
 
-<br/>
+<br/><br/>
 
 <!-- Wave Footer -->
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,3,5,6&height=120&section=footer" />
