@@ -515,27 +515,22 @@ Extract  Stream  Orchestrate Load
 <td align="center">
 
 ```ascii
-╔════════════════════════════════════════════════════════════════╗
-║                                                                ║
-║  "Code is poetry. Data tells stories.                          ║
-║   I write both with precision and passion."                    ║
-║                                                                ║
-║  ⚙️  Architect  •  ⚽  Captain  •  🚀  Innovator               ║
-║                                                                ║
-║  🎓 Forever Learning  •  💡 Always Building  •  🔥 Never Quit  ║
-║                                                                ║
-╚════════════════════════════════════════════════════════════════╝
+┌────────────────────────────────────────────────┐
+│  "Code is poetry. Data tells stories.          │
+│   I write both with precision and passion."    │
+│                                                │
+│   ⚙️  Code • ⚽ Captain • 🚀 Innovate           │
+└────────────────────────────────────────────────┘
 ```
 
 <br/>
 
-**✨ Engineer of my own destiny. Built different. Chasing greatness. ✨**
-
 </td>
 </tr>
 </table>
-
+<sub>Engineer of my own destiny. Built different. Chasing greatness.</sub>
 </div>
+
 
 <br/><br/>
 
