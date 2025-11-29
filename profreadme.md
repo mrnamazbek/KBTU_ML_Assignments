@@ -1,1 +1,115 @@
-<div align="center"><img src="https://www.google.com/search?q=https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="100" />Hi there, I'm Namazbek! 👋<p align="center"><a href="https://www.google.com/search?q=https://github.com/mrnamazbek"><img src="https://www.google.com/search?q=https://img.shields.io/badge/Status-Building_My_Destiny_⚙️-000000?style=for-the-badge&logo=github&logoColor=white" /></a></p></div>👨‍💻 Engineer ProfileCategoryDetails🎓 EducationMSc @ KBTU ('27) • BS @ SDU ('25)💼 Current RoleData Engineer @ Freedom Finance Insurance🌍 Languages🇰🇿 Kazakh (Native) • 🇷🇺 Russian (B2/Fluent) • 🇬🇧 English (B1 - Technical)⚽ HobbyFootball Team Captain & Sports Analyst🚀 FocusBig Data Orchestration, ETL/ELT, AI Integration🛠️ The Arsenal (Tech Stack)<div align="center">Languages<img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/go-%252300ADD8.svg%3Fstyle%3Dfor-the-badge%26logo%3Dgo%26logoColor%3Dwhite" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/java-%2523ED8B00.svg%3Fstyle%3Dfor-the-badge%26logo%3Dopenjdk%26logoColor%3Dwhite" /><img src="https://img.shields.io/badge/sql-025E8C?style=for-the-badge&logo=postgresql&logoColor=white" />Big Data & Cloud<img src="https://www.google.com/search?q=https://img.shields.io/badge/Apache%2520Spark-FDEE21%3Fstyle%3Dfor-the-badge%26logo%3Dapachespark%26logoColor%3Dblack" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/Apache%2520Hadoop-66CCFF%3Fstyle%3Dfor-the-badge%26logo%3Dapachehadoop%26logoColor%3Dblack" /><img src="https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/docker-%25230db7ed.svg%3Fstyle%3Dfor-the-badge%26logo%3Ddocker%26logoColor%3Dwhite" />Machine Learning<img src="https://www.google.com/search?q=https://img.shields.io/badge/PyTorch-%2523EE4C2C.svg%3Fstyle%3Dfor-the-badge%26logo%3DPyTorch%26logoColor%3Dwhite" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/TensorFlow-%2523FF6F00.svg%3Fstyle%3Dfor-the-badge%26logo%3DTensorFlow%26logoColor%3Dwhite" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/scikit--learn-%2523F7931E.svg%3Fstyle%3Dfor-the-badge%26logo%3Dscikit-learn%26logoColor%3Dwhite" />Databases & IDE<img src="https://www.google.com/search?q=https://img.shields.io/badge/postgres-%2523316192.svg%3Fstyle%3Dfor-the-badge%26logo%3Dpostgresql%26logoColor%3Dwhite" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/Oracle-F80000%3Fstyle%3Dfor-the-badge%26logo%3Doracle%26logoColor%3Dwhite" /><img src="https://www.google.com/search?q=https://img.shields.io/badge/PyCharm-21D789%3Fstyle%3Dfor-the-badge%26logo%3Dpycharm%26logoColor%3Dblack" /><img src="https://img.shields.io/badge/DataGrip-DB3BDA?style=for-the-badge&logo=datagrip&logoColor=white" /></div>🔮 Featured Works<div align="center"><table><tr><td align="center" width="33%"><a href="https://www.google.com/search?q=https://github.com/mrnamazbek/Big-Data-Final"><img src="https://www.google.com/search?q=https://img.shields.io/badge/Big_Data-Final_Project-orange%3Fstyle%3Dplastic" /></a>Stream analysis with <b>Hadoop & Spark</b>.</td><td align="center" width="33%"><a href="https://www.google.com/search?q=https://github.com/mrnamazbek/Music-Station"><img src="https://www.google.com/search?q=https://img.shields.io/badge/Music-Station-blue%3Fstyle%3Dplastic" /></a><b>FastAPI + Data Lake</b> recommendation engine.</td><td align="center" width="33%"><a href="https://www.google.com/search?q=https://github.com/mrnamazbek/EPAM-Data-Engineering"><img src="https://www.google.com/search?q=https://img.shields.io/badge/EPAM-Data_Engineering-green%3Fstyle%3Dplastic" /></a>Pipelines with <b>Kafka & Airflow</b>.</td></tr></table></div>📊 GitHub Analytics<div align="center"><img src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api%3Fusername%3Dmrnamazbek%26show_icons%3Dtrue%26theme%3Dradical%26hide_border%3Dtrue%26count_private%3Dtrue" height="160" alt="stats graph"  /><img src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api/top-langs/%3Fusername%3Dmrnamazbek%26layout%3Dcompact%26theme%3Dradical%26hide_border%3Dtrue" height="160" alt="languages graph" /></div><!-- Snake Animation --><div align="center"><img src="https://www.google.com/search?q=https://github-readme-activity-graph.vercel.app/graph%3Fusername%3Dmrnamazbek%26bg_color%3D141321%26color%3D0bc9cd%26line%3D0bc9cd%26point%3D403d3d%26area%3Dtrue%26hide_border%3Dtrue" /></div><div align="center">📫 Let's Connect<a href="https://www.linkedin.com/in/namazbek-bekzhanov/"><img src="https://www.google.com/search?q=https://img.shields.io/badge/linkedin-%25230077B5.svg%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" /></a><a href="https://instagram.com/namazbekzhan"><img src="https://www.google.com/search?q=https://img.shields.io/badge/Instagram-%2523E4405F.svg%3Fstyle%3Dfor-the-badge%26logo%3DInstagram%26logoColor%3Dwhite" /></a><a href="mailto:namazbekzhan@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a></div>
+<div align="center">
+<img src="https://www.google.com/search?q=https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="100" />
+Hi there, I'm Namazbek! 👋
+<p align="center">
+<a href="https://www.google.com/search?q=https://github.com/mrnamazbek">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Status-Building_My_Destiny_⚙️-000000?style=for-the-badge&logo=github&logoColor=white" />
+</a>
+</p>
+</div>
+👨‍💻 Engineer Profile
+Category
+Details
+🎓 Education
+MSc @ KBTU ('27) • BS @ SDU ('25)
+💼 Current Role
+Data Engineer @ Freedom Finance Insurance
+🌍 Languages
+🇰🇿 Kazakh (Native) • 🇷🇺 Russian (B2/Fluent) • 🇬🇧 English (B1 - Technical)
+⚽ Hobby
+Football Team Captain & Sports Analyst
+🚀 Focus
+Big Data Orchestration, ETL/ELT, AI Integration
+
+🛠️ The Arsenal (Tech Stack)
+<div align="center">
+Languages
+
+
+
+<img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/go-%252300ADD8.svg%3Fstyle%3Dfor-the-badge%26logo%3Dgo%26logoColor%3Dwhite" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/java-%2523ED8B00.svg%3Fstyle%3Dfor-the-badge%26logo%3Dopenjdk%26logoColor%3Dwhite" />
+<img src="https://img.shields.io/badge/sql-025E8C?style=for-the-badge&logo=postgresql&logoColor=white" />
+Big Data & Cloud
+
+
+
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Apache%2520Spark-FDEE21%3Fstyle%3Dfor-the-badge%26logo%3Dapachespark%26logoColor%3Dblack" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Apache%2520Hadoop-66CCFF%3Fstyle%3Dfor-the-badge%26logo%3Dapachehadoop%26logoColor%3Dblack" />
+<img src="https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/docker-%25230db7ed.svg%3Fstyle%3Dfor-the-badge%26logo%3Ddocker%26logoColor%3Dwhite" />
+Machine Learning
+
+
+
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/PyTorch-%2523EE4C2C.svg%3Fstyle%3Dfor-the-badge%26logo%3DPyTorch%26logoColor%3Dwhite" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/TensorFlow-%2523FF6F00.svg%3Fstyle%3Dfor-the-badge%26logo%3DTensorFlow%26logoColor%3Dwhite" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/scikit--learn-%2523F7931E.svg%3Fstyle%3Dfor-the-badge%26logo%3Dscikit-learn%26logoColor%3Dwhite" />
+Databases & IDE
+
+
+
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/postgres-%2523316192.svg%3Fstyle%3Dfor-the-badge%26logo%3Dpostgresql%26logoColor%3Dwhite" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Oracle-F80000%3Fstyle%3Dfor-the-badge%26logo%3Doracle%26logoColor%3Dwhite" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/PyCharm-21D789%3Fstyle%3Dfor-the-badge%26logo%3Dpycharm%26logoColor%3Dblack" />
+<img src="https://img.shields.io/badge/DataGrip-DB3BDA?style=for-the-badge&logo=datagrip&logoColor=white" />
+</div>
+🔮 Featured Works
+<div align="center">
+<table>
+<tr>
+<td align="center" width="33%">
+<a href="https://www.google.com/search?q=https://github.com/mrnamazbek/Big-Data-Final">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Big_Data-Final_Project-orange%3Fstyle%3Dplastic" />
+</a>
+
+
+
+
+Stream analysis with <b>Hadoop & Spark</b>.
+</td>
+<td align="center" width="33%">
+<a href="https://www.google.com/search?q=https://github.com/mrnamazbek/Music-Station">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Music-Station-blue%3Fstyle%3Dplastic" />
+</a>
+
+
+
+
+<b>FastAPI + Data Lake</b> recommendation engine.
+</td>
+<td align="center" width="33%">
+<a href="https://www.google.com/search?q=https://github.com/mrnamazbek/EPAM-Data-Engineering">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/EPAM-Data_Engineering-green%3Fstyle%3Dplastic" />
+</a>
+
+
+
+
+Pipelines with <b>Kafka & Airflow</b>.
+</td>
+</tr>
+</table>
+</div>
+📊 GitHub Analytics
+<div align="center">
+<img src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api%3Fusername%3Dmrnamazbek%26show_icons%3Dtrue%26theme%3Dradical%26hide_border%3Dtrue%26count_private%3Dtrue" height="160" alt="stats graph" />
+<img src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api/top-langs/%3Fusername%3Dmrnamazbek%26layout%3Dcompact%26theme%3Dradical%26hide_border%3Dtrue" height="160" alt="languages graph" />
+</div>
+<!-- Snake Animation -->
+<div align="center">
+<img src="https://www.google.com/search?q=https://github-readme-activity-graph.vercel.app/graph%3Fusername%3Dmrnamazbek%26bg_color%3D141321%26color%3D0bc9cd%26line%3D0bc9cd%26point%3D403d3d%26area%3Dtrue%26hide_border%3Dtrue" />
+</div>
+<div align="center">
+📫 Let's Connect
+<a href="https://www.linkedin.com/in/namazbek-bekzhanov/">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/linkedin-%25230077B5.svg%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" />
+</a>
+<a href="https://instagram.com/namazbekzhan">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Instagram-%2523E4405F.svg%3Fstyle%3Dfor-the-badge%26logo%3DInstagram%26logoColor%3Dwhite" />
+</a>
+<a href="mailto:namazbekzhan@gmail.com">
+<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+</a>
+</div>
