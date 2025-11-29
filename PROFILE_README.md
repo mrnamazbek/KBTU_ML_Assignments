@@ -389,40 +389,23 @@ Extract  Stream  Orchestrate Load
 <!-- Glowing Divider -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 📊 GitHub Analytics Dashboard
+## 📊 GitHub Performance Metrics
 
 <div align="center">
 
-<table>
-<tr>
-<td width="50%" align="center">
-  
-**📈 Profile Stats**
-  
-<img src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9" width="100%"/>
+<!-- Stats Cards -->
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9"/>
 
-</td>
-<td width="50%" align="center">
+</div>
 
-**💻 Top Languages**
+<div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9" width="100%"/>
+<!-- Contribution Streak -->
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=mrnamazbek&theme=algolia&hide_border=true&background=0D1117&stroke=00F7F7&ring=00F7F7&fire=FF6E00&currStreakLabel=00F7F7" width="49%"/>
 
-</td>
-</tr>
-</table>
-
-<br/>
-
-**🔥 Contribution Streak**
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=mrnamazbek&hide_border=true&background=0D1117&stroke=00F7F7&ring=00F7F7&fire=FF6E00&currStreakLabel=00F7F7" width="65%"/>
-
-<br/><br/>
-
-**📉 Contribution Activity**
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=mrnamazbek&theme=react-dark&hide_border=true&area=true&bg_color=0D1117&color=00F7F7&line=00F7F7&point=FFFFFF" width="95%"/>
+<!-- Activity Graph -->
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=mrnamazbek&theme=react-dark&hide_border=true&area=true&bg_color=0D1117&color=00F7F7&line=00F7F7&point=FFFFFF" width="100%"/>
 
 </div>
 
@@ -431,102 +414,55 @@ Extract  Stream  Orchestrate Load
 <!-- Glowing Divider -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<br/>
-
-## 🤝 Let's Connect!
+## 🌐 Connect & Collaborate
 
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="33%">
-
-### 💼 Professional
-
+<!-- Social Badges -->
 <a href="https://www.linkedin.com/in/namazbek-bekzhanov/">
-<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" height="35"/>
+  <img src="https://img.shields.io/badge/LinkedIn-Let's_Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
-
-**Connect & Network**
-
-</td>
-<td align="center" width="33%">
-
-### 📧 Direct Contact
-
 <a href="mailto:namazbekzhan@gmail.com">
-<img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" height="35"/>
+  <img src="https://img.shields.io/badge/Gmail-Send_Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 </a>
-
-**Email Me Anytime**
-
-</td>
-<td align="center" width="33%">
-
-### 📱 Social
-
 <a href="https://instagram.com/namazbekzhan">
-<img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" height="35"/>
+  <img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
 </a>
-
-**Follow My Journey**
-
-</td>
-</tr>
-</table>
-
-<br/>
-
-### 💭 Daily Inspiration
-
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=algolia&border=true" width="600"/>
 
 <br/><br/>
 
+<!-- Dynamic Quote -->
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=algolia&border=true" width="550"/>
+
+---
+<br/><br/>
+
+<!-- Profile Views Counter -->
 <img src="https://komarev.com/ghpvc/?username=mrnamazbek&label=Profile%20Visitors&color=00F7F7&style=for-the-badge" alt="Profile views" />
 
 </div>
 
 <br/>
 
-<!-- Glowing Divider -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-<br/>
-
 <!-- Philosophy Section -->
 <div align="center">
+  
+### 💭 Engineering Philosophy
 
-## 🎯 My Engineering Mantra
-
-<table>
-<tr>
-<td align="center">
-
-```ascii
-╔════════════════════════════════════════════════════════════════╗
-║                                                                ║
-║  "Code is poetry. Data tells stories.                          ║
-║   I write both with precision and passion."                    ║
-║                                                                ║
-║  ⚙️  Architect  •  ⚽  Captain  •  🚀  Innovator               ║
-║                                                                ║
-║  🎓 Forever Learning  •  💡 Always Building  •  🔥 Never Quit  ║
-║                                                                ║
-╚════════════════════════════════════════════════════════════════╝
+```
+┌────────────────────────────────────────────────┐
+│  "Code is poetry. Data tells stories.          │
+│   I write both with precision and passion."    │
+│                                                │
+│   ⚙️  Code • ⚽ Captain • 🚀 Innovate           │
+└────────────────────────────────────────────────┘
 ```
 
-<br/>
-
-**✨ Engineer of my own destiny. Built different. Chasing greatness. ✨**
-
-</td>
-</tr>
-</table>
+<sub>Engineer of my own destiny. Built different. Chasing greatness.</sub>
 
 </div>
 
-<br/><br/>
+<br/>
 
 <!-- Wave Footer -->
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,3,5,6&height=120&section=footer" />
