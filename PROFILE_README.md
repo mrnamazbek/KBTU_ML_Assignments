@@ -151,25 +151,25 @@ if __name__ == "__main__":
 
     📊 DATA SOURCES                🔄 PROCESSING              📦 STORAGE
          │                              │                         │
-    ┌────▼────┐                   ┌────▼─────┐             ┌────▼────┐
-    │  APIs   │──────────────────▶│  Spark   │────────────▶│PostgreSQL│
-    │Databases│                   │  Hadoop  │             │  Oracle  │
-    │  Kafka  │                   │ Airflow  │             │  S3/HDFS │
-    └─────────┘                   └──────────┘             └──────────┘
+    ┌────▼─────┐                   ┌────▼─────┐             ┌────▼─────┐
+    │  APIs    │──────────────────▶│  Spark   │────────────▶│PostgreSQL│
+    │Databases │                   │  Hadoop  │             │  Oracle  │
+    │  Kafka   │                   │ Airflow  │             │  S3/HDFS │
+    └──────────┘                   └──────────┘             └──────────┘
          │                              │                         │
-         │                         ┌────▼─────┐                  │
-         └────────────────────────▶│Transform │──────────────────┘
+         │                         ┌────▼─────┐                   │
+         └────────────────────────▶│Transform │───────────────────┘
                                    │ Cleanse  │
                                    │ Validate │
                                    └──────────┘
 
     🤖 ML PIPELINE                 🎯 DEPLOYMENT            📊 MONITORING
          │                              │                         │
-    ┌────▼────┐                   ┌────▼─────┐             ┌────▼────┐
-    │ Sklearn │                   │ FastAPI  │             │Grafana  │
+    ┌────▼─────┐                   ┌────▼─────┐             ┌────▼─────┐    
+    │ Sklearn  │                   │ FastAPI  │             │ Grafana  │
     │TensorFlow│──────────────────▶│  Docker  │────────────▶│Prometheus│
-    │ PyTorch │                   │Kubernetes│             │  Logs   │
-    └─────────┘                   └──────────┘             └─────────┘
+    │ PyTorch  │                   │Kubernetes│             │  Logs    │
+    └──────────┘                   └──────────┘             └──────────┘
 ```
 
 <br/>
@@ -394,8 +394,8 @@ Extract  Stream  Orchestrate Load
 <div align="center">
 
 <!-- Stats Cards -->
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&theme=algolia&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=10&theme=algolia&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=mrnamazbek&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00F7F7&icon_color=00F7F7&text_color=c9d1d9"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mrnamazbek&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=00F7F7&text_color=c9d1d9"/>
 
 </div>
 
@@ -432,8 +432,9 @@ Extract  Stream  Orchestrate Load
 <br/><br/>
 
 <!-- Dynamic Quote -->
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=algolia&border=true" width="600"/>
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=algolia&border=true" width="550"/>
 
+---
 <br/><br/>
 
 <!-- Profile Views Counter -->
@@ -450,10 +451,10 @@ Extract  Stream  Orchestrate Load
 
 ```
 ┌────────────────────────────────────────────────┐
-│  "Code is poetry. Data tells stories.         │
-│   I write both with precision and passion."   │
+│  "Code is poetry. Data tells stories.          │
+│   I write both with precision and passion."    │
 │                                                │
-│   ⚙️  Code • ⚽ Captain • 🚀 Innovate         │
+│   ⚙️  Code • ⚽ Captain • 🚀 Innovate           │
 └────────────────────────────────────────────────┘
 ```
 
