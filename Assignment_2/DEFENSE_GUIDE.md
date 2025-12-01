@@ -1,11 +1,14 @@
 # 🛡️ Defense Guide: Assignment 2 (Life Satisfaction)
-# Гайд по защите: Задание 2 (Удовлетворенность жизнью)
+# 🇷🇺 Гайд по защите: Задание 2 (Удовлетворенность жизнью)
 
 ---
 
 ## 🎯 Goal / Цель
-**🇬🇧 English:** Predict if people in a country are happy (**Life Satisfaction**) based on how much money they make (**GDP per capita**).
-**🇷🇺 Русский:** Предсказать, счастливы ли люди в стране (**Удовлетворенность жизнью**), основываясь на том, сколько денег они зарабатывают (**ВВП на душу населения**).
+**🇬🇧 English:**  
+Predict if people in a country are happy (**Life Satisfaction**) based on how much money they make (**GDP per capita**). We compare two models: **Linear Regression** and **K-Nearest Neighbors (KNN)**.
+
+**🇷🇺 Русский:**  
+Предсказать, счастливы ли люди в стране (**Удовлетворенность жизнью**), основываясь на том, сколько денег они зарабатывают (**ВВП на душу населения**). Мы сравниваем две модели: **Линейная регрессия** и **Метод ближайших соседей (KNN)**.
 
 ---
 
@@ -13,43 +16,44 @@
 
 ### 1. Data Preparation / Подготовка данных
 ```python
-X = np.c_[country_stats["GDP per capita"]]
-y = np.c_[country_stats["Life satisfaction"]]
+X = df[['GDP per capita']].values
+y = df['Life satisfaction'].values
 ```
-*   **🇬🇧 Explanation:** `np.c_` translates the data into a column (vertical list). Scikit-Learn expects input `X` to be a 2D array (matrix), not a flat list.
-*   **🇷🇺 Объяснение:** `np.c_` превращает данные в столбец (вертикальный список). Scikit-Learn требует, чтобы входные данные `X` были двумерным массивом (матрицей), а не плоским списком.
+*   **🇬🇧 Logic:**
+    *   `X` (Features): Must be a **2D array** (matrix). That's why we use double brackets `[['...']]` or `.values` with reshaping. Scikit-Learn expects a list of rows, where each row is a list of features.
+    *   `y` (Target): Is a **1D array** (vector).
+*   **🇷🇺 Логика:**
+    *   `X` (Признаки): Должен быть **двумерным массивом** (матрицей). Поэтому мы используем двойные скобки `[['...']]`. Scikit-Learn ожидает список строк, где каждая строка — это список признаков.
+    *   `y` (Цель): Это **одномерный массив** (вектор).
 
 ### 2. Linear Regression / Линейная регрессия
 ```python
-model = sklearn.linear_model.LinearRegression()
+model = LinearRegression()
 model.fit(X, y)
 ```
-*   **🇬🇧 Logic:** It tries to draw a straight line that minimizes the distance to all data points.
-*   **🇷🇺 Логика:** Модель пытается провести прямую линию так, чтобы расстояние от нее до всех точек данных было минимальным.
-*   **🔑 Key Parameter:** None (it's a simple equation $y = mx + b$).
-*   **� Ключевой параметр:** Нет (это простое уравнение $y = mx + b$).
+*   **🇬🇧 Logic:** The model tries to draw a **straight line** ($y = mx + b$) that minimizes the error (distance) between the line and the data points.
+*   **🇷🇺 Логика:** Модель пытается провести **прямую линию** ($y = mx + b$), которая минимизирует ошибку (расстояние) между линией и точками данных.
 
-### 3. K-Nearest Neighbors / Метод ближайших соседей
+### 3. K-Nearest Neighbors (KNN) / Метод ближайших соседей
 ```python
-model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+model = KNeighborsRegressor(n_neighbors=3)
 ```
-*   **🇬🇧 Logic:** To predict for a new country, it finds the 3 countries with the most similar GDP and averages their happiness.
-*   **🇷🇺 Логика:** Чтобы сделать предсказание для новой страны, алгоритм находит 3 страны с самым похожим ВВП и берет среднее значение их счастья.
-*   **🔑 Key Parameter (`n_neighbors=3`):**
-    *   **Why 3?** Small enough to capture local patterns, big enough to ignore noise.
-    *   **Почему 3?** Достаточно мало, чтобы уловить локальные закономерности, но достаточно много, чтобы игнорировать шум.
+*   **🇬🇧 Logic:** To predict happiness for a new country, the model finds the **3 countries** with the most similar GDP and calculates their average happiness.
+*   **🇷🇺 Логика:** Чтобы предсказать счастье для новой страны, модель находит **3 страны** с самым похожим ВВП и вычисляет их среднее счастье.
 
 ---
 
 ## 📉 Weak Points & Improvements / Слабые места и улучшения
 
-1.  **🇬🇧 Weakness:** We only use **one feature** (GDP). Happiness depends on health, freedom, corruption, etc.
-    *   **🇷🇺 Слабость:** Мы используем только **один признак** (ВВП). Счастье зависит от здоровья, свободы, коррупции и т.д.
-    *   **🚀 Improvement:** Add more features (Multi-variate regression). / Добавить больше признаков (Многофакторная регрессия).
+### 1. Single Feature / Один признак
+*   **🇬🇧 Weakness:** We only use **GDP**. Happiness depends on many things (health, freedom, corruption, weather).
+*   **🇷🇺 Слабость:** Мы используем только **ВВП**. Счастье зависит от многих вещей (здоровье, свобода, коррупция, погода).
+*   **🚀 Improvement:** Use **Multivariate Regression** (add more columns like 'Health', 'Freedom'). / Использовать **Многофакторную регрессию** (добавить колонки 'Здоровье', 'Свобода').
 
-2.  **🇬🇧 Weakness:** Linear Regression assumes the world is simple (straight line). Real life is complex.
-    *   **🇷🇺 Слабость:** Линейная регрессия предполагает, что мир прост (прямая линия). Реальная жизнь сложнее.
-    *   **🚀 Improvement:** Use Polynomial Regression (curved line). / Использовать полиномиальную регрессию (изогнутая линия).
+### 2. Linearity Assumption / Предположение линейности
+*   **🇬🇧 Weakness:** Linear Regression assumes the relationship is a straight line. But maybe after a certain point, more money doesn't make you happier (diminishing returns).
+*   **🇷🇺 Слабость:** Линейная регрессия предполагает, что связь — это прямая линия. Но, возможно, после определенной точки деньги перестают приносить счастье (убывающая полезность).
+*   **🚀 Improvement:** Use **Polynomial Regression** (curved line). / Использовать **Полиномиальную регрессию** (изогнутая линия).
 
 ---
 
@@ -57,29 +61,33 @@ model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
 
 ### Q1: Why did you choose Linear Regression?
 ### В1: Почему вы выбрали линейную регрессию?
-*   **🇬🇧 Answer:** Because when I plotted the data, I saw a linear trend. As money goes up, happiness goes up. It's a simple baseline model.
-*   **🇷🇺 Ответ:** Потому что, когда я построил график, я увидел линейный тренд. Чем больше денег, тем больше счастья. Это простая базовая модель.
+*   **🇬🇧 Answer:** It is the simplest model. The scatter plot showed a general upward trend, so a straight line is a good starting point (baseline).
+*   **🇷🇺 Ответ:** Это самая простая модель. Точечный график показал общий тренд вверх, поэтому прямая линия — хорошая отправная точка (базовая модель).
 
 ### Q2: What is the difference between `fit` and `predict`?
 ### В2: В чем разница между `fit` и `predict`?
-*   **🇬🇧 Answer:** `fit` is for **learning** (finding the pattern in training data). `predict` is for **using** that pattern to guess answers for new data.
-*   **🇷🇺 Ответ:** `fit` — это **обучение** (поиск закономерностей в тренировочных данных). `predict` — это **использование** этих закономерностей для предсказания ответов на новых данных.
+*   **🇬🇧 Answer:**
+    *   `fit(X, y)`: **Training**. The model looks at the data and calculates the best parameters (slope and intercept).
+    *   `predict(X)`: **Inference**. The model uses the calculated parameters to guess the target for new data.
+*   **🇷🇺 Ответ:**
+    *   `fit(X, y)`: **Обучение**. Модель смотрит на данные и вычисляет лучшие параметры (наклон и сдвиг).
+    *   `predict(X)`: **Предсказание**. Модель использует вычисленные параметры, чтобы угадать ответ для новых данных.
 
 ### Q3: What happens if `n_neighbors=1` in KNN?
 ### В3: Что будет, если `n_neighbors=1` в KNN?
-*   **🇬🇧 Answer:** The model becomes **overfitted**. It will just copy the closest point exactly, even if that point is an outlier (noise).
-*   **🇷🇺 Ответ:** Модель **переобучится**. Она будет просто копировать ближайшую точку точь-в-точь, даже если эта точка — выброс (шум).
+*   **🇬🇧 Answer:** The model becomes **unstable (overfitting)**. It will blindly copy the value of the single nearest neighbor, even if that point is an outlier or noise.
+*   **🇷🇺 Ответ:** Модель становится **нестабильной (переобучение)**. Она будет слепо копировать значение единственного ближайшего соседа, даже если эта точка — выброс или шум.
 
 ---
 
 ## 📐 Math Intuition / Математическая интуиция
 
-**Linear Regression:**
+### Linear Regression Equation
 $$ y = \theta_0 + \theta_1 x $$
-*   We want to find $\theta_0$ (intercept/сдвиг) and $\theta_1$ (slope/наклон).
-*   Мы хотим найти $\theta_0$ (где линия пересекает ось Y) и $\theta_1$ (насколько круто линия идет вверх).
+*   $\theta_0$ (Intercept): Where the line starts on the Y-axis. (Базовый уровень счастья).
+*   $\theta_1$ (Slope): How much happiness increases for every $1 increase in GDP. (Скорость роста счастья).
 
-**KNN:**
+### KNN Formula
 $$ y = \frac{1}{k} \sum_{i=1}^{k} y_i $$
-*   We just take the average of the $k$ nearest neighbors.
-*   Мы просто берем среднее арифметическое $k$ ближайших соседей.
+*   **English:** Average of the $k$ nearest neighbors.
+*   **Русский:** Среднее арифметическое $k$ ближайших соседей.

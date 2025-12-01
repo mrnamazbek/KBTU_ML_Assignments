@@ -1,11 +1,14 @@
 # 🛡️ Defense Guide: Assignment 6 (Titanic)
-# Гайд по защите: Задание 6 (Титаник)
+# 🇷🇺 Гайд по защите: Задание 6 (Титаник)
 
 ---
 
 ## 🎯 Goal / Цель
-**🇬🇧 English:** Predict who survives the Titanic disaster. This involves complex Feature Engineering and Model Tuning.
-**🇷🇺 Русский:** Предсказать, кто выживет в катастрофе Титаника. Это включает в себя сложную инженерию признаков и настройку модели.
+**🇬🇧 English:**  
+Predict who survives the Titanic disaster. This involves **Feature Engineering** (creating new features like Family Size) and comparing multiple models (**Logistic Regression, Random Forest, SVM**).
+
+**🇷🇺 Русский:**  
+Предсказать, кто выживет в катастрофе Титаника. Это включает в себя **Инженерию признаков** (создание новых признаков, таких как Размер семьи) и сравнение нескольких моделей (**Логистическая регрессия, Случайный лес, SVM**).
 
 ---
 
@@ -15,59 +18,66 @@
 ```python
 class FamilySizeAdder(BaseEstimator, TransformerMixin):
     def transform(self, X):
+        family_size = sibsp + parch + 1
         return np.c_[X, family_size]
 ```
-*   **🇬🇧 Logic:** We create a class to add `FamilySize = SibSp + Parch + 1`.
-*   **🇷🇺 Логика:** Мы создаем класс, чтобы добавить признак `FamilySize = Братья/Сестры + Родители + 1`.
-*   **Why?** Scikit-Learn Pipelines only accept classes with `fit` and `transform` methods. Writing a custom class allows us to put our logic inside the pipeline cleanly.
-*   **Зачем?** Пайплайны Scikit-Learn принимают только классы с методами `fit` и `transform`. Написание своего класса позволяет чисто встроить нашу логику в пайплайн.
+*   **🇬🇧 Logic:** We create a new feature `FamilySize` by adding `SibSp` (Siblings/Spouses) + `Parch` (Parents/Children) + 1 (Self).
+*   **🇷🇺 Логика:** Мы создаем новый признак `FamilySize` (Размер семьи), складывая `SibSp` (Братья/Сестры) + `Parch` (Родители/Дети) + 1 (Сам пассажир).
+*   **Why?** Large families might have a harder time escaping together. Alone people might be forgotten. This combines two weak features into one strong one.
+*   **Зачем?** Большим семьям может быть труднее спастись вместе. Одиноких людей могут забыть. Это объединяет два слабых признака в один сильный.
 
-### 2. ColumnTransformer / Трансформер колонок
+### 2. Log Transformation / Логарифмирование
 ```python
-ColumnTransformer([
-    ("num", num_pipeline, num_attribs),
-    ("cat", OneHotEncoder(), cat_attribs),
-])
+FunctionTransformer(np.log1p)
 ```
-*   **🇬🇧 Logic:** Splits data into two streams (Numbers vs Categories), processes them differently, and glues them back together.
-*   **🇷🇺 Логика:** Разделяет данные на два потока (Числа и Категории), обрабатывает их по-разному и склеивает обратно.
+*   **🇬🇧 Logic:** We apply `log(1 + x)` to the `Fare` column.
+*   **🇷🇺 Логика:** Мы применяем `log(1 + x)` к колонке `Fare` (Стоимость билета).
+*   **Why?** Fare is highly skewed (some tickets are \$500, most are \$10). Log makes the distribution normal, which helps Linear Regression and SVM.
+*   **Зачем?** Стоимость билета сильно скошена (некоторые билеты стоят \$500, большинство — \$10). Логарифм делает распределение нормальным, что помогает Логистической регрессии и SVM.
 
 ### 3. Random Forest / Случайный лес
 ```python
-RandomForestClassifier(n_estimators=100)
+RandomForestClassifier(n_estimators=150)
 ```
-*   **🇬🇧 Logic:** An ensemble of 100 Decision Trees. Each tree votes, and the majority wins.
-*   **🇷🇺 Логика:** Ансамбль из 100 деревьев решений. Каждое дерево голосует, и большинство побеждает.
+*   **🇬🇧 Logic:** An ensemble of 150 Decision Trees. Each tree votes, and the majority wins.
+*   **🇷🇺 Логика:** Ансамбль из 150 деревьев решений. Каждое дерево голосует, и большинство побеждает.
 
 ---
 
 ## 📉 Weak Points & Improvements / Слабые места и улучшения
 
-1.  **🇬🇧 Weakness:** We dropped the **Cabin** column because of missing values.
-    *   **🇷🇺 Слабость:** Мы удалили колонку **Каюта (Cabin)** из-за пропусков.
-    *   **🚀 Improvement:** The "Deck" (A, B, C...) could be extracted from the Cabin number. Richer people were on higher decks. This is valuable info we lost. / Можно было извлечь "Палубу" (A, B, C...) из номера каюты. Богатые люди были на верхних палубах. Мы потеряли эту ценную информацию.
+### 1. Dropping Cabin / Удаление каюты
+*   **🇬🇧 Weakness:** We dropped the `Cabin` column because it had many missing values.
+*   **🇷🇺 Слабость:** Мы удалили колонку `Cabin` (Каюта), потому что в ней было много пропусков.
+*   **🚀 Improvement:** Extract the **Deck** (A, B, C...) from the cabin number. Richer people were on higher decks (closer to lifeboats).
+*   **🚀 Улучшение:** Извлечь **Палубу** (A, B, C...) из номера каюты. Богатые люди были на верхних палубах (ближе к шлюпкам).
+
+### 2. Title Extraction / Извлечение титула
+*   **🇬🇧 Weakness:** We used raw names.
+*   **🇷🇺 Слабость:** Мы использовали сырые имена.
+*   **🚀 Improvement:** Extract titles like "Mr.", "Mrs.", "Miss", "Master". "Master" (boy) had a much higher survival rate than "Mr." (man).
+*   **🚀 Улучшение:** Извлечь титулы, такие как "Mr.", "Mrs.", "Miss", "Master". "Master" (мальчик) имел гораздо более высокий шанс выживания, чем "Mr." (мужчина).
 
 ---
 
 ## ❓ Professor Questions / Вопросы профессора
 
-### Q1: Why is Random Forest better than a Decision Tree?
-### В1: Почему Случайный лес лучше, чем Дерево решений?
-*   **🇬🇧 Answer:** A single tree **overfits** (memorizes noise). A Random Forest averages many trees, which cancels out errors (Variance reduction).
-*   **🇷🇺 Ответ:** Одно дерево **переобучается** (запоминает шум). Случайный лес усредняет много деревьев, что гасит ошибки (снижение дисперсии).
+### Q1: Why is Random Forest better than a single Decision Tree?
+### В1: Почему Случайный лес лучше, чем одно Дерево решений?
+*   **🇬🇧 Answer:** A single tree **overfits** (memorizes noise). A Random Forest averages many trees, which cancels out errors (reduces Variance).
+*   **🇷🇺 Ответ:** Одно дерево **переобучается** (запоминает шум). Случайный лес усредняет много деревьев, что гасит ошибки (снижает дисперсию).
 
-### Q2: What is GridSearchCV?
-### В2: Что такое GridSearchCV?
-*   **🇬🇧 Answer:** It's a brute-force search. I give it a list of settings (e.g., 10 trees, 50 trees, 100 trees), and it tries ALL of them to find the best one.
-*   **🇷🇺 Ответ:** Это перебор грубой силой. Я даю список настроек (например, 10 деревьев, 50 деревьев, 100 деревьев), и он пробует ИХ ВСЕ, чтобы найти лучшую.
+### Q2: Why did SVM perform poorly without scaling?
+### В2: Почему SVM показал плохой результат без масштабирования?
+*   **🇬🇧 Answer:** SVM tries to maximize the "margin" (distance) between classes. If one feature (Fare) is 500 and another (Age) is 30, the distance is dominated by Fare. SVM becomes biased towards high-value features.
+*   **🇷🇺 Ответ:** SVM пытается максимизировать "зазор" (расстояние) между классами. Если один признак (Fare) равен 500, а другой (Age) — 30, расстояние определяется Fare. SVM становится смещенным в сторону признаков с большими значениями.
 
 ---
 
 ## 📐 Math Intuition / Математическая интуиция
 
-**Ensemble Voting:**
-**Голосование ансамбля:**
+### Ensemble Voting (Wisdom of the Crowd)
+### Голосование ансамбля (Мудрость толпы)
 
-*   If you have 1 expert who is right 70% of the time, they are okay.
-*   If you have 100 experts who are right 70% of the time, and they vote, the majority vote will be right **99.9%** of the time (Law of Large Numbers).
-*   **🇷🇺 RU:** Если у вас есть 1 эксперт, который прав в 70% случаев — это нормально. Если у вас 100 экспертов, и они голосуют, большинство будет право в **99.9%** случаев (Закон больших чисел).
+*   **🇬🇧 EN:** If you have 1 expert who is right 70% of the time, they are okay. If you have 100 experts who are right 70% of the time, and they vote, the majority vote will be correct **>99%** of the time (Law of Large Numbers).
+*   **🇷🇺 RU:** Если у вас есть 1 эксперт, который прав в 70% случаев — это нормально. Если у вас 100 экспертов, и они голосуют, большинство будет право в **>99%** случаев (Закон больших чисел).
