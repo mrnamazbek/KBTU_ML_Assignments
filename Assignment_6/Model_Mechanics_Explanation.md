@@ -3,85 +3,134 @@
 ## 1. The `max_iter` Parameter: How to Choose? / Параметр `max_iter`: Как выбрать?
 
 ### 🇬🇧 English
-**What is it?** 
-`max_iter` (Maximum Iterations) is a safety stop for proper optimization algorithms. Think of it as a "time limit" for a solver to find the best mathematical solution (the minimum of the cost function).
+**Visual Concept**: Imagine a blindfolded hiker trying to find the lowest point in a valley (Minimum Error). `max_iter` is the maximum number of steps they are allowed to take.
+
+```mermaid
+graph TD
+    A[Start at Random Point] --> B{Step Downhill?}
+    B -- Yes --> C[Take Step]
+    C --> D{Is it the Bottom?}
+    D -- Yes --> E[Success! Converged]
+    D -- No --> F{Steps > max_iter?}
+    F -- No --> B
+    F -- Yes --> G[Stop! ConvergenceWarning]
+    style G fill:#ffcccc,stroke:#333
+    style E fill:#ccffcc,stroke:#333
+```
+
+**Real-World Example**:
+*   **Finance**: Optimizing portfolio weights where you need a precise solution within milliseconds.
+*   **Robotics**: Inverse kinematics solvers where you need a solution before the robot moves to the next frame.
 
 **How to determine the optimal value?**
-It is NOT directly based on the number of rows, but rather on the **complexity of the optimization surface** (how "bumpy" the mathematical terrain is).
-1.  **Start Default**: Usually 100.
-2.  **If it fails (ConvergenceWarning)**: This means the solver didn't reach the bottom of the valley before the time ran out.
-3.  **Action**:
-    *   **Scale Data first!** (StandardScaler). This smooths the terrain, making it easier to descend. This is the correct fix 90% of the time.
-    *   **Increase `max_iter`**: If scaling doesn't help (or you can't scale), increase by powers of 10: `100` -> `1000` -> `5000`.
-    *   **Stop point**: If it takes too long or doesn't converge at 10,000+, your data might be noisy or the problem ill-posed.
+It depends on the **complexity of the optimization surface**.
+1.  **Scale Data first!** (StandardScaler). This smooths the terrain.
+2.  **Increase `max_iter`**: `100` -> `1000` -> `5000`.
 
 ### 🇷🇺 Русский
-**Что это такое?**
-`max_iter` (Максимальное число итераций) — это предохранитель для алгоритмов оптимизации. Представьте это как "лимит времени", который дается алгоритму, чтобы найти лучшее математическое решение (минимум функции ошибок).
+**Визуализация**: Представьте туриста с завязанными глазами, который пытается найти самую низкую точку в долине (Минимальную ошибку). `max_iter` — это максимальное количество шагов, которое ему разрешено сделать.
 
-**Как определить оптимальное значение?**
-Оно зависит НЕ от количества строк, а от **сложности "ландшафта"** оптимизации (насколько "ухабиста" математическая поверхность).
-1.  **Начните с дефолта**: Обычно 100.
-2.  **Если ошибка (ConvergenceWarning)**: Это значит, что алгоритм не успел спуститься на "дно ущелья" (найти минимум) до истечения времени.
-3.  **Действия**:
-    *   **Сначала отмасштабируйте данные!** (StandardScaler). Это "сглаживает" ландшафт, делая спуск проще. Это правильное решение в 90% случаев.
-    *   **Увеличьте `max_iter`**: Если шкалирование не помогло (или нельзя применить), увеличивайте в 10 раз: `100` -> `1000` -> `5000`.
-    *   **Когда остановиться**: Если даже при 10,000+ не сходится, возможно, данные слишком "шумные" или проблема поставлена некорректно.
+**Пример из жизни**:
+*   **Финансы**: Оптимизация портфеля акций, где нужно точное решение за миллисекунды.
+*   **Робототехника**: Расчет движения робота, где решение нужно найти до следующего кадра.
 
 ---
 
 ## 2. Logistic Regression (Логистическая Регрессия)
 
 ### 🇬🇧 English
-**Purpose (Intent)**: To classify data by drawing a straight line (decision boundary) that separates classes.  
-**Under the Hood**:
-1.  **Calculates a weighted sum** of inputs ($z = w1*x1 + w2*x2 + b$).
-2.  **Squashes** this sum using the **Sigmoid function** ($1 / (1 + e^{-z})$) to get a probability between 0 and 1.
-3.  **Solver (L-BFGS)**: This is the engine. It looks at the errors and iteratively adjusts weights ($w$) to minimize the log-loss. It's like a ball rolling down a hill; `max_iter` is how many planned steps it takes.
-**Why it failed initially**: Without scaling, one "step" in the `fare` direction (values 0-500) is huge compared to `age` (0-80). The solver "zig-zags" wildly and runs out of steps.
+**Visual Concept**: Finding a linear boundary.
+```mermaid
+graph LR
+    Input[Inputs: Age, Fare, Sex] --> Sum(Weighted Sum z)
+    Sum --> Sigmoid{Sigmoid Function}
+    Sigmoid --> Prob[Probability 0.75]
+    Prob --> Class{Threshold > 0.5?}
+    Class -- Yes --> Survived(Survived)
+    Class -- No --> Died(Died)
+```
+
+**Common Use Cases**:
+*   **Credit Scoring**: Predicting if a user will default on a loan (Yes/No).
+*   **Medical Diagnosis**: Healthy vs. Sick based on blood test results.
+*   **Spam Detection**: Is this email Spam or Not Spam?
+
+**Trend**: 
+Still the **#1 industry standard** for baselines. It provides **interpretable coefficients** (e.g., "being male reduces odds by 50%"), which is crucial in banking and medicine where "black box" models are illegal.
 
 ### 🇷🇺 Русский
-**Цель**: Классифицировать данные, проведя прямую линию (границу решений), разделяющую классы.
-**Под капотом**:
-1.  **Считает взвешенную сумму** входов ($z = w1*x1 + w2*x2 + b$).
-2.  **Сжимает** эту сумму функцией **Сигмоиды**, получая вероятность от 0 до 1.
-3.  **Solver (L-BFGS)**: Это "движок". Он смотрит на ошибки и итеративно подкручивает веса ($w$), чтобы минимизировать ошибку (log-loss). Это похоже на мяч, катящийся с горы; `max_iter` — это количество шагов.
-**Почему была ошибка**: Без шкалирования один "шаг" в направлении цены билета (`fare`, значения 0-500) огромен по сравнению с возрастом (`age`, 0-80). Алгоритм начинает "вилять" из стороны в сторону и не успевает спуститься за 100 шагов.
+**Частые примеры**:
+*   **Кредитный скоринг**: Вернет ли клиент кредит (Да/Нет).
+*   **Медицина**: Здоров/Болен на основе анализов.
+*   **Спам-фильтры**: Спам или не спам.
+
+**Тренд**:
+Остается **золотым стандартом** как базовая модель. Она дает **интерпретируемые коэффициенты** (например, "мужской пол снижает шансы на 50%"), что критически важно в банках и медицине, где "черные ящики" запрещены.
 
 ---
 
 ## 3. Random Forest (Случайный Лес)
 
 ### 🇬🇧 English
-**Purpose**: To create a robust model by combining many weak/simple models (Decision Trees). "Wisdom of the crowds."
-**Under the Hood**:
-1.  **Bootstrapping**: It creates 150 (since `n_estimators=150`) random subsets of your data (allowing duplicates).
-2.  **Tree Building**: It builds a Decision Tree on each subset. Crucially, at every split point, it considers only a **random subset of features**. This ensures the trees are different (uncorrelated).
-3.  **Voting**: When predicting, all 150 trees vote. "Survived" or "Died". The majority wins.
-**Insight**: It is **scale-invariant**. It doesn't care if `fare` is 500 or 0.5; it just asks "Is fare > 50?". That's why it worked perfectly without StandardScaler.
+**Visual Concept**: Wisdom of the Crowds.
+```mermaid
+graph TD
+    Data[Dataset] --> B1[Bootstrap Sample 1]
+    Data --> B2[Bootstrap Sample 2]
+    Data --> B3[Bootstrap Sample ...]
+    B1 --> T1[Tree 1: 'Survived']
+    B2 --> T2[Tree 2: 'Died']
+    B3 --> T3[Tree 3: 'Survived']
+    T1 & T2 & T3 --> Vote{Majority Vote}
+    Vote --> Final[Final Prediction: 'Survived']
+```
+
+**Common Use Cases**:
+*   **E-commerce Recommendation**: Predicting if a user will buy an item based on history.
+*   **Fraud Detection**: Detecting anomaly transactions in real-time.
+*   **Kinect/Gaming**: Real-time body pose estimation (used in Xbox Kinect original algorithms).
+
+**Trend**:
+It is the **"King of Tabular Data"**. For structured data (Excel-like tables), Kaggle competitions show that Gradient Boosting (XGBoost/CatBoost) and Random Forests still often outperform deep neural networks. They are "robust out of the box" and require less tuning.
 
 ### 🇷🇺 Русский
-**Цель**: Создать мощную модель, объединив много слабых (Решающих Деревьев). Принцип "Мудрость толпы".
-**Под капотом**:
-1.  **Бутстрэппинг**: Создает 150 (так как `n_estimators=150`) случайных подвыборок из данных.
-2.  **Построение деревьев**: Строит дерево на каждой подвыборке. Главное: в каждом узле ветвления оно смотрит только на **случайную часть признаков**. Это делает деревья непохожими друг на друга.
-3.  **Голосование**: При предсказании все 150 деревьев голосуют. Большинство побеждает.
-**Инсайт**: Эта модель **инвариантна к масштабу**. Ей все равно, цена 500 или 0.5, она просто спрашивает "Цена > 50?". Поэтому она отлично работала без StandardScaler.
+**Частые примеры**:
+*   **Рекомендации**: Купит ли пользователь товар.
+*   **Антифрод**: Поиск мошеннических транзакций.
+*   **Геймдев**: Распознавание позы тела (использовалось в Xbox Kinect).
+
+**Тренд**:
+Это **"Король табличных данных"**. Для обычных таблиц (как в Excel) Random Forest и Градиентный Бустинг (XGBoost) все еще часто побеждают нейросети. Они работают "из коробки" и требуют меньше настройки.
 
 ---
 
 ## 4. Support Vector Machine / SVM (Метод Опорных Векторов)
 
 ### 🇬🇧 English
-**Purpose**: To find the **widest possible street** (margin) that separates the classes.  
-**Under the Hood**:
-1.  **Kernel Trick (RBF)**: Generally, data isn't separable by a straight line in 2D. SVM projects data into higher dimensions (3D, 4D, etc.) where they *can* be separated by a plane.
-2.  **Margin Maximization**: It tries to place the boundary so that the distance to the nearest points of both classes (the "Support Vectors") is maximized.
-**Insight**: SVM calculates **distances** between points. If one feature (`fare`) has huge numbers, it dominates the distance calculation, making other features (`age`, `sex`) irrelevant. This crashes performance without scaling.
+**Visual Concept**: Maximizing the "Street" width.
+```mermaid
+graph TD
+    A((Class A)) --- Margin1
+    B((Class B)) --- Margin2
+    Margin1 --- Separator[Hyperplane / Decision Boundary]
+    Margin2 --- Separator
+    style Separator stroke-width:4px,fill:#fff,stroke:#333
+```
+*Ideally, SVM creates the widest possible gap between the nearest dots of Class A and Class B.*
+
+**Common Use Cases**:
+*   **Text Classification**: Categorizing news articles into topics (Politics, Sports) - works well with high-dimensional sparse data.
+*   **Bioinformatics**: Classifying gene expression data.
+*   **Image Recognition (Legacy)**: Used for face detection before Deep Learning took over.
+
+**Trend**:
+**Declining popularity** for large datasets because it is slow ($O(n^2)$ complexity). However, it is still **excellent for small, complex datasets** with high dimensionality where neural networks would overfit.
 
 ### 🇷🇺 Русский
-**Цель**: Найти **самую широкую дорогу** (зазор), разделяющую классы.
-**Под капотом**:
-1.  **Kernel Trick (Ядерный трюк)**: Часто данные нельзя разделить прямой линией на плоскости. SVM проецирует данные в высшие измерения (3D, 4D и т.д.), где их *можно* разделить плоскостью.
-2.  **Максимизация зазора**: Он ставит границу так, чтобы расстояние до ближайших точек обоих классов ("Опорных векторов") было максимальным.
-**Инсайт**: SVM считает **расстояния** между точками. Если один признак (цена) имеет огромные числа, он полностью перетягивает на себя расчет расстояния, и остальные признаки (возраст, пол) становятся неважными. Без шкалирования модель ломается.
+**Частые примеры**:
+*   **Классификация текста**: Новости по рубрикам (Политика, Спорт).
+*   **Биоинформатика**: Анализ генов.
+*   **Распознавание образов**: Использовался для лиц до эры глубокого обучения.
+
+**Тренд**:
+**Популярность падает** на больших данных, так как он медленный. Но он все еще **незаменим для маленьких, сложных задач**, где нейросети просто запомнят данные (переобучатся).
