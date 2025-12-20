@@ -568,6 +568,176 @@ meta_X_train = cross_val_predict(f1, X_train, y_train, cv=5)
 
 ---
 
+## 📝 Практический код (sklearn)
+
+### Random Forest с hyperparameters
+
+```python
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.model_selection import GridSearchCV
+
+# ═══════════════════════════════════════════════════════════════
+# ГИПЕРПАРАМЕТРЫ RANDOM FOREST
+# ═══════════════════════════════════════════════════════════════
+# n_estimators: число деревьев
+#   - 100: default, хорошо для старта
+#   - 500-1000: для финальной модели
+#   - Больше деревьев = меньше variance (но diminishing returns)
+#
+# max_features: число признаков для split
+#   - 'sqrt': √p для классификации (default)
+#   - 'log2': log₂(p)
+#   - 0.3-0.5: доля от p (для регрессии часто p/3)
+#
+# max_depth: глубина деревьев
+#   - None: растить до конца (default, high variance per tree)
+#   - 10-20: ограничение для контроля overfitting
+#
+# min_samples_split, min_samples_leaf: контроль листьев
+#   - Увеличить при overfitting
+#
+# oob_score: использовать OOB для валидации ("бесплатный" CV!)
+# ═══════════════════════════════════════════════════════════════
+
+# Классификация
+rf_clf = RandomForestClassifier(
+    n_estimators=500,
+    max_features='sqrt',
+    max_depth=None,
+    min_samples_leaf=1,
+    oob_score=True,       # ← "бесплатная" валидация
+    n_jobs=-1,            # параллелизация на всех ядрах
+    random_state=42
+)
+rf_clf.fit(X_train, y_train)
+print(f"OOB Score: {rf_clf.oob_score_:.3f}")
+
+# Feature Importance
+import pandas as pd
+importance = pd.DataFrame({
+    'feature': X_train.columns,
+    'importance': rf_clf.feature_importances_
+}).sort_values('importance', ascending=False)
+```
+
+### XGBoost с hyperparameters
+
+```python
+from xgboost import XGBClassifier, XGBRegressor
+from sklearn.model_selection import GridSearchCV
+
+# ═══════════════════════════════════════════════════════════════
+# ГИПЕРПАРАМЕТРЫ XGBOOST
+# ═══════════════════════════════════════════════════════════════
+# n_estimators: число деревьев (100-1000)
+#
+# learning_rate (η): shrinkage
+#   - 0.1: стандарт
+#   - 0.01-0.05: лучше генерализация, нужно больше деревьев
+#
+# max_depth: глубина деревьев
+#   - 3-6: стандарт (shallow trees = weak learners!)
+#   - Глубже → риск overfitting
+#
+# subsample: доля данных для каждого дерева
+#   - 0.8: стандарт
+#   - <1.0: стохастический GB, снижает overfitting
+#
+# colsample_bytree: доля признаков для каждого дерева
+#   - 0.8: стандарт
+#
+# reg_lambda (L2), reg_alpha (L1): регуляризация
+#   - 1.0: default для lambda
+#   - Увеличить при overfitting
+#
+# early_stopping_rounds: остановка при ухудшении validation
+# ═══════════════════════════════════════════════════════════════
+
+xgb = XGBClassifier(
+    n_estimators=500,
+    learning_rate=0.1,
+    max_depth=5,
+    subsample=0.8,
+    colsample_bytree=0.8,
+    reg_lambda=1.0,
+    reg_alpha=0.0,
+    use_label_encoder=False,
+    eval_metric='logloss',
+    random_state=42
+)
+
+# Early Stopping (КРИТИЧЕСКИ ВАЖНО!)
+xgb.fit(
+    X_train, y_train,
+    eval_set=[(X_val, y_val)],
+    early_stopping_rounds=50,
+    verbose=False
+)
+print(f"Best iteration: {xgb.best_iteration}")
+
+# GridSearch для XGBoost
+param_grid = {
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.01, 0.1],
+    'n_estimators': [100, 300, 500]
+}
+grid = GridSearchCV(XGBClassifier(), param_grid, cv=3, scoring='roc_auc')
+```
+
+### Stacking с sklearn
+
+```python
+from sklearn.ensemble import StackingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+
+# Stacking: комбинация разных моделей
+stacking = StackingClassifier(
+    estimators=[
+        ('rf', RandomForestClassifier(n_estimators=100)),
+        ('xgb', XGBClassifier(n_estimators=100, use_label_encoder=False)),
+    ],
+    final_estimator=LogisticRegression(),  # мета-модель
+    cv=5,                                   # CV для мета-признаков
+    stack_method='predict_proba'           # вероятности как мета-фичи
+)
+stacking.fit(X_train, y_train)
+```
+
+### Таблица гиперпараметров
+
+| Модель | Параметр | Default | Диапазон | Когда менять |
+|--------|----------|---------|----------|--------------|
+| **RF** | n_estimators | 100 | 100-1000 | Больше = лучше (до плато) |
+| | max_features | sqrt | sqrt, log2, 0.3-1.0 | Подбор через CV |
+| | max_depth | None | 10-30, None | При overfitting |
+| **XGB** | n_estimators | 100 | 100-5000 | С early_stopping |
+| | learning_rate | 0.3 | 0.01-0.3 | η↓ требует n_estimators↑ |
+| | max_depth | 6 | 3-10 | Ключевой для overfitting |
+| | subsample | 1.0 | 0.5-1.0 | При overfitting |
+
+---
+
+## 🎯 Q&A для экзамена
+
+**Q1: Почему Random Forest устойчив к overfitting?**
+> Bagging снижает variance через усреднение. Даже если каждое дерево переобучено, их среднее — нет (при условии независимости). Random feature selection делает деревья менее коррелированными → усреднение эффективнее.
+
+**Q2: Чем отличается Bagging от Boosting?**
+> Bagging: параллельное обучение независимых моделей, усреднение, цель — снизить variance. Boosting: последовательное обучение, каждая модель исправляет ошибки предыдущих, цель — снизить bias.
+
+**Q3: Зачем нужен early stopping в XGBoost?**
+> Boosting последовательно снижает bias, но может увеличивать variance (overfitting). Early stopping останавливает обучение когда validation error начинает расти → оптимальный баланс bias/variance.
+
+**Q4: Почему OOB error почти эквивалентен CV?**
+> При bootstrap ~37% данных не попадает в каждый sample (e^(-1) ≈ 0.368). Эти out-of-bag примеры используются для валидации каждой модели → эффект как cross-validation, но "бесплатно".
+
+**Q5: Когда Stacking лучше простого усреднения?**
+> Когда базовые модели разные по природе (LogReg + RF + XGB) и имеют разные сильные стороны. Мета-модель учится взвешивать их оптимально. Для похожих моделей (10 RF) простое усреднение достаточно.
+
+---
+
 ## Резюме модуля
 
 Ансамбли — это **"мудрость толпы"** в ML:
