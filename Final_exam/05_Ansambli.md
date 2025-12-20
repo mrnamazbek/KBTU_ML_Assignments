@@ -64,10 +64,15 @@ $$
 Около 37% данных остаются "чистыми" для каждого дерева — их можно использовать для **бесплатной валидации**.
 
 **Снижение variance (математически):**  
-Если модели $f_b$ независимы и имеют дисперсию $\sigma^2$:
+Если модели $f_b$ имеют корреляцию $\rho$ и дисперсию $\sigma^2$:
 $$
-\text{Var}(\text{average}) = \text{Var}\left(\frac{1}{B} \sum f_b\right) = \frac{\sigma^2}{B}
+\text{Var}(\text{average}) = \rho\sigma^2 + \frac{1-\rho}{B}\sigma^2
 $$
+
+**Вывод:**  
+- Если $\rho = 0$ (независимы): $\text{Var} = \sigma^2 / B$.
+- Если $\rho = 1$ (полная зависимость): $\text{Var} = \sigma^2$ (усреднение не помогает).
+- Bagging (Random Forest) работает за счет **декорреляции** деревьев (уменьшения $\rho$).
 
 > [!TIP]
 > **Аналогия: Консилиум врачей**  
@@ -97,15 +102,15 @@ Bagging эффективен для **low-bias, high-variance моделей**:
 ≈ 37% объектов не попадают в каждый bootstrap sample.  
 Используем их для оценки модели **без отдельного validation set**!
 
-**OOB Prediction для объекта x_i:**
-```
-ŷ_OOB(x_i) = average{f_b(x_i) : x_i ∉ D_b}
-```
+**OOB Prediction для объекта $\mathbf{x}_i$:**
+$$
+\hat{y}_{OOB}(\mathbf{x}_i) = \text{average}\{f_b(\mathbf{x}_i) : \mathbf{x}_i \notin D_b\}
+$$
 
 **OOB Error:**
-```
-OOB_Error = (1/n) Σ L(y_i, ŷ_OOB(x_i))
-```
+$$
+\text{OOB\_Error} = \frac{1}{n} \sum_{i=1}^{n} L(y_i, \hat{y}_{OOB}(\mathbf{x}_i))
+$$
 
 **Преимущество:**  
 "Бесплатная" валидация (не нужен отдельный validation set), почти эквивалентна cross-validation!

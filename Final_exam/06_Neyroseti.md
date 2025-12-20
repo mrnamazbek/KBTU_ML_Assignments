@@ -72,21 +72,20 @@ $$
 
 **Причина:**  
 При глубоких сетях градиент = произведение многих производных активаций:
-```
-∂L/∂W₁ = ∂L/∂ŷ · σ'(z_n) · W_n · σ'(z_{n-1}) · ... · σ'(z_1) · x
-```
+$$
+\frac{\partial L}{\partial \mathbf{W}_1} = \frac{\partial L}{\partial \hat{y}} \cdot \sigma'(z_n) \cdot \mathbf{W}_n \cdot \sigma'(z_{n-1}) \cdot \dots \cdot \sigma'(z_1) \cdot \mathbf{x}
+$$
 
-**Если σ' < 1** (например, sigmoid: σ' ≤ 0.25), то:
-```
-(0.25)^10 ≈ 10^(-6)  ← градиент исчезает!
-```
+$$
+(0.25)^{10} \approx 10^{-6} \quad \leftarrow \text{градиент исчезает!}
+$$
 
 **Последствия:**
 - Ранние слои **почти не обучаются** (градиенты ≈ 0)
 - Сеть застревает (saturation)
 
 **Решения:**
-1. **ReLU activation**: ReLU'(z) = 1 (для z > 0) → нет затухания
+1. **ReLU activation**: $\text{ReLU}'(z) = 1$ (для $z > 0$) → нет затухания
 2. **Batch Normalization**: нормализует активации
 3. **Residual connections** (ResNet): y = F(x) + x (skip connections)
 4. **Better initialization**: Xavier, He initialization

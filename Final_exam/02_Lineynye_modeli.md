@@ -550,68 +550,64 @@ MLE — это метод оценки параметров статистиче
 
 **Likelihood Function:**
 
-Пусть данные {x_1, ..., x_n} независимы и одинаково распределены (i.i.d.) с плотностью p(x|θ).
+Пусть данные $\{x_1, \dots, x_n\}$ независимы и одинаково распределены (i.i.d.) с плотностью $p(x|\theta)$.
 
 **Likelihood:**
-```
-L(θ | x_1, ..., x_n) = Π p(x_i | θ)
-```
+$$
+L(\theta | x_1, \dots, x_n) = \prod_{i=1}^{n} p(x_i | \theta)
+$$
 
 **Log-Likelihood (удобнее для оптимизации):**
-```
-ℓ(θ) = log L(θ) = Σ log p(x_i | θ)
-```
+$$
+\ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log p(x_i | \theta)
+$$
 
 **MLE:**
-```
-θ̂_MLE = argmax ℓ(θ)
-          θ
-```
+$$
+\hat{\theta}_{MLE} = \arg\max_{\theta} \ell(\theta)
+$$
 
 **Пример 1: OLS как MLE**
 
 **Предположение:**  
-y_i = w^T x_i + ε_i,  где ε_i ∼ N(0, σ²)
+$y_i = \mathbf{w}^T \mathbf{x}_i + \epsilon_i$,  где $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$
 
 **Likelihood:**
-```
-p(y_i | x_i, w) = (1/√(2πσ²)) exp(-(y_i - w^T x_i)² / (2σ²))
-```
+$$
+p(y_i | \mathbf{x}_i, \mathbf{w}) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y_i - \mathbf{w}^T \mathbf{x}_i)^2}{2\sigma^2}\right)
+$$
 
 **Log-Likelihood:**
-```
-ℓ(w) = Σ [-(y_i - w^T x_i)² / (2σ²) - log(√(2πσ²))]
-     ∝ -Σ (y_i - w^T x_i)²  (убираем константы)
-```
+$$
+\ell(\mathbf{w}) = \sum \left[-\frac{(y_i - \mathbf{w}^T \mathbf{x}_i)^2}{2\sigma^2} - \log(\sqrt{2\pi\sigma^2})\right] \propto -\sum (y_i - \mathbf{w}^T \mathbf{x}_i)^2
+$$
 
 **MLE:**
-```
-w_MLE = argmax ℓ(w) = argmin Σ (y_i - w^T x_i)²
-        w              w
-```
+$$
+\hat{\mathbf{w}}_{MLE} = \arg\max_{\mathbf{w}} \ell(\mathbf{w}) = \arg\min_{\mathbf{w}} \sum (y_i - \mathbf{w}^T \mathbf{x}_i)^2
+$$
 
 **Это MSE!** OLS = MLE для Gaussian noise.
 
 **Пример 2: Logistic Regression как MLE**
 
 **Предположение:**  
-y_i ∼ Bernoulli(p_i),  где p_i = σ(w^T x_i)
+$y_i \sim \text{Bernoulli}(p_i)$,  где $p_i = \sigma(\mathbf{w}^T \mathbf{x}_i)$
 
 **Likelihood:**
-```
-p(y_i | x_i, w) = p_i^(y_i) · (1 - p_i)^(1 - y_i)
-```
+$$
+p(y_i | \mathbf{x}_i, \mathbf{w}) = p_i^{y_i} \cdot (1 - p_i)^{1 - y_i}
+$$
 
 **Log-Likelihood:**
-```
-ℓ(w) = Σ [y_i log(p_i) + (1 - y_i) log(1 - p_i)]
-```
+$$
+\ell(\mathbf{w}) = \sum [y_i \log(p_i) + (1 - y_i) \log(1 - p_i)]
+$$
 
 **MLE:**
-```
-w_MLE = argmax ℓ(w)
-        w
-```
+$$
+\hat{\mathbf{w}}_{MLE} = \arg\max_{\mathbf{w}} \ell(\mathbf{w})
+$$
 
 **Это минимизация Log Loss!**
 
