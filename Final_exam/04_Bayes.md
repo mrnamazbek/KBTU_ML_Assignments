@@ -147,7 +147,7 @@ P(not_spam | "viagra") ∝ 0.01 · 0.7 = 0.007
 Не делаем предположений, все гипотезы равновероятны.
 
 **Пример:**
-- Uniform prior: P(θ) = const
+- **Uniform prior**: $P(\theta) = \text{const}$
 
 **Informative prior:**  
 Используем domain knowledge.
@@ -159,14 +159,14 @@ P(not_spam | "viagra") ∝ 0.01 · 0.7 = 0.007
 **Проблема 4: Computational Issues**
 
 **Числитель вычислим:**
-```
-P(x|y) · P(y)
-```
+$$
+P(\mathbf{x}|y) \cdot P(y)
+$$
 
-**Знаменатель P(x) сложен:**
-```
-P(x) = Σ P(x|y) · P(y)
-```
+**Знаменатель $P(\mathbf{x})$ сложен:**
+$$
+P(\mathbf{x}) = \sum_{y} P(\mathbf{x}|y) \cdot P(y)
+$$
 Требует суммирования по всем классам (ОК для малого числа классов).
 
 **Для непрерывных x:**  
@@ -200,7 +200,7 @@ Naive Bayes — это **generative probabilistic classifier**, основанн
 
 **Какую проблему решает:**
 - **Быстрая классификация** (обучение и инференс за O(n·d))
-- **Малые данные**: работает даже при n << d
+- **Малые данные**: работает даже при $n \ll d$
 - **Text classification**: естественный выбор для bag-of-words
 
 **Где это индустриальный стандарт:**
@@ -216,9 +216,9 @@ Naive Bayes — это **generative probabilistic classifier**, основанн
 ### 3) Математическое ядро
 
 **Теорема Байеса для классификации:**
-```
-P(y|x) ∝ P(x|y) · P(y)
-```
+$$
+P(y|\mathbf{x}) \propto P(\mathbf{x}|y) \cdot P(y)
+$$
 
 **Naive Bayes assumption (условная независимость):**
 $$
