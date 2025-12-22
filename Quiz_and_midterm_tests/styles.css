@@ -55,6 +55,7 @@ body {
     border-radius: var(--radius-m);
     padding: var(--space-l);
     transition: transform 0.2s ease, border-color 0.2s ease;
+    width: 100%;
 }
 
 /* Typography Hub */
@@ -102,7 +103,12 @@ header {
     display: block;
 }
 
-/* Registration Form */
+#registration-screen {
+    grid-column: span 6;
+    grid-column-start: 4;
+    align-self: center;
+}
+
 .auth-form {
     display: flex;
     flex-direction: column;
@@ -136,6 +142,11 @@ header {
 .module-card {
     cursor: pointer;
     border: 1px solid var(--glass-border);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .module-card:hover {
@@ -154,7 +165,8 @@ header {
     align-items: center;
     gap: var(--space-m);
     margin-bottom: var(--space-l);
-    grid-column: span 12;
+    width: 100%;
+    max-width: 900px;
 }
 
 .progress-track {
@@ -179,8 +191,25 @@ header {
     color: var(--accent-blue);
 }
 
-.question-area {
+#quiz-screen {
     grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.question-area,
+.feedback-panel {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.question-area {
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
 }
 
 .options-list {
@@ -219,8 +248,8 @@ header {
 
 /* Feedback Panel */
 .feedback-panel {
-    margin-top: var(--space-l);
-    background: rgba(0, 0, 0, 0.3);
+    margin-top: var(--space-m);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .feedback-grid {
@@ -271,6 +300,19 @@ header {
 }
 
 /* Utility */
+#report-screen {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.report-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .hidden {
     display: none !important;
 }

@@ -21,7 +21,7 @@
         </header>
 
         <!-- Registration Screen -->
-        <section id="registration-screen" class="glass-panel" style="grid-column: span 6; grid-column-start: 4;">
+        <section id="registration-screen" class="glass-panel text-center">
             <div class="text-center">
                 <h3>Identify Yourself</h3>
                 <p class="text-secondary">Data persistence requires a profile signature.</p>
@@ -88,7 +88,7 @@
         </section>
 
         <!-- Quiz Interface -->
-        <section id="quiz-screen" class="screen hidden" style="grid-column: span 10; grid-column-start: 2;">
+        <section id="quiz-screen" class="screen hidden">
             <nav class="quiz-nav">
                 <button id="exit-btn" class="secondary-btn">✕ Exit</button>
                 <div class="progress-track">
@@ -128,30 +128,32 @@
         </section>
 
         <!-- Final Report -->
-        <section id="report-screen" class="screen hidden glass-panel text-center"
-            style="grid-column: span 8; grid-column-start: 3;">
-            <h1 class="highlight">Assessment Complete</h1>
-            <p class="text-secondary">Historical data updated in protocol records.</p>
+        <section id="report-screen" class="screen hidden glass-panel text-center">
+            <div class="report-container">
+                <h1 class="highlight">Assessment Complete</h1>
+                <p class="text-secondary">Historical data updated in protocol records.</p>
 
-            <div style="display: flex; justify-content: center; gap: var(--space-xl); margin: var(--space-xl) 0;">
-                <div>
-                    <div id="report-score" style="font-size: 3rem; font-weight: 700;">0/0</div>
-                    <p class="protocol-tag">Score</p>
-                </div>
-                <div>
-                    <div id="report-percent" style="font-size: 3rem; font-weight: 700; color: var(--accent-blue);">0%
+                <div style="display: flex; justify-content: center; gap: var(--space-xl); margin: var(--space-xl) 0;">
+                    <div>
+                        <div id="report-score" style="font-size: 3rem; font-weight: 700;">0/0</div>
+                        <p class="protocol-tag">Score</p>
                     </div>
-                    <p class="protocol-tag">Accuracy</p>
+                    <div>
+                        <div id="report-percent" style="font-size: 3rem; font-weight: 700; color: var(--accent-blue);">
+                            0%
+                        </div>
+                        <p class="protocol-tag">Accuracy</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="glass-panel"
-                style="text-align: left; padding: var(--space-m); background: rgba(255, 255, 255, 0.03);">
-                <h3 style="font-size: 1rem; color: var(--error);">⚠️ Conceptual Weaknesses</h3>
-                <ul id="weak-topics-list" style="padding-left: var(--space-m); margin-top: var(--space-s);"></ul>
-            </div>
+                <div class="glass-panel"
+                    style="text-align: left; padding: var(--space-m); background: rgba(255, 255, 255, 0.03);">
+                    <h3 style="font-size: 1rem; color: var(--error);">⚠️ Conceptual Weaknesses</h3>
+                    <ul id="weak-topics-list" style="padding-left: var(--space-m); margin-top: var(--space-s);"></ul>
+                </div>
 
-            <button id="home-btn" class="primary-btn" style="margin-top: var(--space-m);">Return to Dashboard</button>
+                <button id="home-btn" class="primary-btn">Return to Dashboard</button>
+            </div>
         </section>
     </div>
 
