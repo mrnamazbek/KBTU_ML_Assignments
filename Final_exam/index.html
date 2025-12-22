@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Coach - KBTU Intelligence Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="liquid_glass.css">
+    <style>
+        .hero-section {
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .main-card {
+            grid-column: span 2;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
+        }
+
+        .module-card {
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s;
+        }
+
+        .module-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <section class="hero-section">
+            <div class="neon-text" style="letter-spacing: 0.3em; font-size: 0.8rem; margin-bottom: 10px;">COACH
+                PROTOCOL: ACTIVE</div>
+            <h1>ML Exam <span style="color: var(--primary);">Coach</span></h1>
+            <p style="margin: 0 auto; max-width: 600px;">Interactive preparation for ML exams. Bilingual depth,
+                pedagogical analysis, and real-world diagnostics.</p>
+        </section>
+
+        <div class="dashboard-grid">
+            <!-- Midterm -->
+            <a href="midterm_exam.html" class="glass-panel main-card" style="text-decoration: none; color: inherit;">
+                <div>
+                    <span class="badge">Comprehensive</span>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Midterm Practice</h2>
+                    <p>All-in-one 50 question simulation with instant feedback.</p>
+                </div>
+                <div style="font-size: 4rem;">🛡️</div>
+            </a>
+
+            <!-- Sub Modules -->
+            <a href="quiz_2.html" class="glass-panel module-card">
+                <span class="badge">Module 2</span>
+                <h3 style="margin-bottom: 10px;">Data Encoding</h3>
+                <p style="font-size: 0.9rem;">Categories into numeric data and skewness handling.</p>
+            </a>
+
+            <a href="quiz_3.html" class="glass-panel module-card">
+                <span class="badge">Module 3</span>
+                <h3 style="margin-bottom: 10px;">Scaling & RBF</h3>
+                <p style="font-size: 0.9rem;">Normalization strategies and similarity kernels.</p>
+            </a>
+
+            <a href="quiz_4.html" class="glass-panel module-card">
+                <span class="badge">Module 4</span>
+                <h3 style="margin-bottom: 10px;">Pipelines</h3>
+                <p style="font-size: 0.9rem;">Automation and feature engineering logic.</p>
+            </a>
+
+            <a href="quiz_bonus.html" class="glass-panel module-card">
+                <span class="badge">Bonus</span>
+                <h3 style="margin-bottom: 10px;">Validation</h3>
+                <p style="font-size: 0.9rem;">Cross-validation and GridSearch optimization.</p>
+            </a>
+        </div>
+
+        <footer
+            style="margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+            KBTU ML EDUCATION HUB • HIGH READABILITY MODE
+        </footer>
+    </div>
+</body>
+
+</html>
