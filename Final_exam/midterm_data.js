@@ -18,6 +18,7 @@ const masterQuizData = [
         correct: 3,
         topic: "Hyperparameters",
         set: "midterm",
+        hint: "Think about settings you choose BEFORE the fit() method is called.",
         optionExplanations: {
             en: [
                 "❌ **Labels**: This is data preparation, not model tuning.",
@@ -39,6 +40,7 @@ const masterQuizData = [
         correct: 1,
         topic: "Feature Analysis",
         set: "midterm",
+        hint: "Correlation measures the strength of a linear relationship between two numeric variables.",
         optionExplanations: {
             en: [
                 "❌ **Irrelevant**: High correlation makes it the *most* relevant predictor.",
@@ -60,6 +62,7 @@ const masterQuizData = [
         answer: "hist",
         topic: "Visualization",
         set: "midterm",
+        hint: "Think of the short name for 'histogram' in Pandas.",
         optionExplanations: {
             en: ["✅ **hist()**: Automatically generates a grid of histograms for every numerical column in Pandas."],
             ru: ["✅ **hist()**: Автоматически строит сетку гистограмм для каждой числовой колонки в Pandas."]
@@ -71,6 +74,7 @@ const masterQuizData = [
         correct: 1,
         topic: "Visualization",
         set: "midterm",
+        hint: "The letter 'c' usually stands for 'color'.",
         optionExplanations: {
             en: [
                 "❌ **Labels**: Labels use the `label` parameter.",
@@ -92,6 +96,7 @@ const masterQuizData = [
         correct: 2,
         topic: "Tools",
         set: "midterm",
+        hint: "Similar to HTML's <h1> tags.",
         optionExplanations: {
             en: ["❌ **Bold**: Uses `**` or `__`.", "❌ **Link**: Uses `[text](url)`.", "✅ **Heading**: Correct! One `#` is H1, `##` is H2, and so on.", "❌ **Italics**: Uses `*` or `_`."],
             ru: ["❌ **Жирный**: Используется `**`.", "❌ **Ссылка**: Используется `[текст](ссылка)`.", "✅ **Заголовок**: Верно! С одной `#` начинается заголовок первого уровня.", "❌ **Курсив**: Используется `*`."]
@@ -103,6 +108,7 @@ const masterQuizData = [
         correct: 0,
         topic: "ML Types",
         set: "midterm",
+        hint: "Commonly used for 'Market Basket Analysis'.",
         optionExplanations: {
             en: [
                 "✅ **Patterns**: Correct! Finds 'if X, then Y' relationships in transaction data (Market Basket Analysis).",
