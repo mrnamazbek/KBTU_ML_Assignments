@@ -1,0 +1,175 @@
+:root {
+    /* Educational Pro Theme - High Readability */
+    --bg-light: #F8FAFC;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --primary: #2563EB;
+    --primary-hover: #1D4ED8;
+    --accent: #7C3AED;
+    --error: #DC2626;
+    --success: #16A34A;
+    --border: #E2E8F0;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-input: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.glass-panel {
+    /* Renamed to Pro Card in logic */
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.neon-text {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.dashboard-container,
+.exam-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Typography Harmony */
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: #0F172A;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #1E293B;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn-next,
+.btn-action {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-next:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Grid Layouts */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+/* Quiz Specifics */
+.option-btn {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 12px;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.option-btn:hover {
+    border-color: var(--primary);
+    background: #EFF6FF;
+}
+
+.option-btn.correct {
+    border-color: var(--success);
+    background: #F0FDF4;
+    color: var(--success);
+}
+
+.option-btn.incorrect {
+    border-color: var(--error);
+    background: #FEF2F2;
+    color: var(--error);
+}
+
+.option-label {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border: 1px solid var(--border);
+}
+
+.explanation-panel {
+    background: #F8FAFC !important;
+    border-top: 4px solid var(--primary);
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 0 0 12px 12px;
+}
+
+.exp-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.exp-item.active {
+    border-left: 4px solid var(--accent);
+    background: #F5F3FF;
+}
+
+/* Removed distracting elements */
+.scanline {
+    display: none !important;
+}
+
+.animate-pulse {
+    animation: none !important;
+}

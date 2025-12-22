@@ -1,175 +1,202 @@
-import { questions } from './questions.js';
+import { quizDatabase } from './midterm_data.js';
 
-class ExamTrainer {
+class CoachHub {
     constructor() {
-        this.questions = [...questions];
+        this.user = JSON.parse(localStorage.getItem('ml_coach_user') || 'null');
+        this.leaderboard = JSON.parse(localStorage.getItem('ml_coach_leaderboard') || '[]');
+        this.currentModule = null;
         this.currentQuestions = [];
         this.currentIndex = 0;
         this.score = 0;
-        this.mode = 'quiz';
         this.timer = null;
-        this.timeLeft = 0;
-        this.times = [];
         this.startTime = 0;
-        this.history = JSON.parse(localStorage.getItem('ml_trainer_history') || '[]');
+        this.times = [];
         this.weakTopics = {};
-        this.strongTopics = {};
 
         this.initElements();
         this.bindEvents();
-        this.updateGlobalDashboard();
+        this.checkAuth();
+        this.updateLeaderboardDisplay();
     }
 
     initElements() {
-        this.screens = {
-            home: document.getElementById('home-screen'),
-            quiz: document.getElementById('quiz-screen'),
-            report: document.getElementById('report-screen')
-        };
         this.elements = {
+            app: document.getElementById('app'),
+            regScreen: document.getElementById('registration-screen'),
+            homeScreen: document.getElementById('home-screen'),
+            quizScreen: document.getElementById('quiz-screen'),
+            reportScreen: document.getElementById('report-screen'),
+            regForm: document.getElementById('registration-form'),
+            welcomeText: document.getElementById('welcome-text'),
+            leaderboard: document.getElementById('leaderboard'),
+            moduleCards: document.querySelectorAll('.module-card'),
+            themeToggle: document.getElementById('theme-toggle'),
+
+            // Quiz UI
             questionText: document.getElementById('question-text'),
-            optionsGrid: document.getElementById('options-grid'),
-            currentIndex: document.getElementById('current-index'),
-            totalQuestions: document.getElementById('total-questions'),
+            optionsContainer: document.getElementById('options-container'),
             progressBar: document.getElementById('progress-bar'),
             timer: document.getElementById('timer'),
+            moduleNameDisplay: document.getElementById('module-name'),
+            currentCount: document.getElementById('current-count'),
+
+            // Feedback
             feedbackPanel: document.getElementById('feedback-panel'),
             feedbackStatus: document.getElementById('feedback-status'),
-            correctAnswerText: document.getElementById('correct-answer-text'),
-            whyCorrect: document.getElementById('why-correct'),
-            whyWrong: document.getElementById('why-wrong'),
-            memoryHint: document.getElementById('memory-hint'),
+            feedbackEn: document.getElementById('feedback-en'),
+            feedbackRu: document.getElementById('feedback-ru'),
+            feedbackHint: document.getElementById('feedback-hint'),
             nextBtn: document.getElementById('next-btn'),
-            finalScore: document.getElementById('final-score'),
-            finalPercent: document.getElementById('final-percent'),
-            trend: document.getElementById('trend'),
-            avgTime: document.getElementById('avg-time'),
-            weakTopicsList: document.getElementById('weak-topics'),
-            strongTopicsList: document.getElementById('strong-topics'),
-            totalAttempts: document.getElementById('total-attempts'),
-            masteryLevel: document.getElementById('mastery-level')
+
+            // Report
+            reportScore: document.getElementById('report-score'),
+            reportPercent: document.getElementById('report-percent'),
+            reportTime: document.getElementById('report-time'),
+            weakTopicsList: document.getElementById('weak-topics-list'),
+            retryWeakBtn: document.getElementById('retry-weak-btn'),
+            homeBtn: document.getElementById('home-btn'),
+            exitBtn: document.getElementById('exit-btn')
         };
     }
 
     bindEvents() {
-        document.querySelectorAll('.mode-card').forEach(card => {
-            card.addEventListener('click', () => this.startQuiz(card.dataset.mode));
+        this.elements.regForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.register();
+        });
+
+        this.elements.themeToggle.addEventListener('click', () => this.toggleTheme());
+
+        this.elements.moduleCards.forEach(card => {
+            card.addEventListener('click', () => {
+                this.startModule(card.dataset.module);
+            });
         });
 
         this.elements.nextBtn.addEventListener('click', () => this.nextQuestion());
-        document.getElementById('exit-btn').addEventListener('click', () => this.showScreen('home'));
-        document.getElementById('home-btn').addEventListener('click', () => this.showScreen('home'));
-        document.getElementById('retry-weak-btn').addEventListener('click', () => this.retryWeak());
+        this.elements.homeBtn.addEventListener('click', () => this.showScreen('home'));
+        this.elements.exitBtn.addEventListener('click', () => this.showScreen('home'));
     }
 
-    updateGlobalDashboard() {
-        const total = this.history.reduce((acc, run) => acc + run.total, 0);
-        this.elements.totalAttempts.textContent = total;
-
-        if (this.history.length > 0) {
-            const avgScore = this.history.reduce((acc, run) => acc + (run.score / run.total), 0) / this.history.length;
-            this.elements.masteryLevel.textContent = Math.round(avgScore * 100) + '%';
+    checkAuth() {
+        if (this.user) {
+            this.showScreen('home');
+            this.elements.welcomeText.innerHTML = `Hello, <span class="highlight">${this.user.name}</span>`;
+            this.updateUserStats();
+        } else {
+            this.showScreen('reg');
         }
     }
 
-    startQuiz(mode) {
-        this.mode = mode;
+    register() {
+        const name = document.getElementById('user-name').value;
+        const surname = document.getElementById('user-surname').value;
+        this.user = { name, surname, attempts: 0, totalScore: 0, bestAccuracy: 0 };
+        localStorage.setItem('ml_coach_user', JSON.stringify(this.user));
+        this.checkAuth();
+    }
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+    }
+
+    showScreen(screen) {
+        this.elements.regScreen.classList.add('hidden');
+        this.elements.homeScreen.classList.add('hidden');
+        this.elements.quizScreen.classList.add('hidden');
+        this.elements.reportScreen.classList.add('hidden');
+
+        if (screen === 'reg') this.elements.regScreen.classList.remove('hidden');
+        if (screen === 'home') this.elements.homeScreen.classList.remove('hidden');
+        if (screen === 'quiz') this.elements.quizScreen.classList.remove('hidden');
+        if (screen === 'report') this.elements.reportScreen.classList.remove('hidden');
+    }
+
+    startModule(moduleId) {
+        this.currentModule = moduleId;
+        this.currentQuestions = this.shuffle([...quizDatabase[moduleId]]);
         this.currentIndex = 0;
         this.score = 0;
         this.times = [];
         this.weakTopics = {};
-        this.strongTopics = {};
 
-        // Prepare questions
-        this.currentQuestions = this.shuffle([...this.questions]);
-        if (mode === 'midterm') this.currentQuestions = this.currentQuestions.slice(0, 15);
-        if (mode === 'final') this.currentQuestions = this.currentQuestions.slice(0, 25);
-
-        this.elements.totalQuestions.textContent = this.currentQuestions.length;
+        this.elements.moduleNameDisplay.textContent = moduleId.toUpperCase();
         this.showScreen('quiz');
         this.loadQuestion();
     }
 
     loadQuestion() {
         const q = this.currentQuestions[this.currentIndex];
+        this.elements.currentCount.textContent = this.currentIndex + 1;
         this.elements.questionText.textContent = q.question;
-        this.elements.currentIndex.textContent = this.currentIndex + 1;
-        this.elements.optionsGrid.innerHTML = '';
-        this.elements.feedbackPanel.classList.add('hidden');
+        this.elements.progressBar.style.width = `${((this.currentIndex) / this.currentQuestions.length) * 100}%`;
 
-        const progress = ((this.currentIndex) / this.currentQuestions.length) * 100;
-        this.elements.progressBar.style.width = `${progress}%`;
-
+        this.elements.optionsContainer.innerHTML = '';
         Object.entries(q.options).forEach(([key, text]) => {
             const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerHTML = `<span class="label">${key}</span> <span class="text">${text}</span>`;
-            btn.addEventListener('click', () => this.checkAnswer(key));
-            this.elements.optionsGrid.appendChild(btn);
+            btn.className = 'secondary-btn option-btn';
+            btn.innerHTML = `<span class="opt-key">${key}</span> ${text}`;
+            btn.onclick = () => this.checkAnswer(key);
+            this.elements.optionsContainer.appendChild(btn);
         });
 
-        this.startTimer();
+        this.elements.feedbackPanel.classList.add('hidden');
+        this.startTimer(this.currentModule === 'midterm' ? 60 : 45);
         this.startTime = Date.now();
     }
 
-    startTimer() {
+    startTimer(seconds) {
         clearInterval(this.timer);
-        if (this.mode === 'quiz') {
-            this.elements.timer.textContent = '--:--';
-            return;
-        }
-
-        this.timeLeft = this.mode === 'midterm' ? 45 : 75;
-        this.updateTimerDisplay();
-
+        let timeLeft = seconds;
+        const updateDisplay = () => {
+            const m = Math.floor(timeLeft / 60);
+            const s = timeLeft % 60;
+            this.elements.timer.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        };
+        updateDisplay();
         this.timer = setInterval(() => {
-            this.timeLeft--;
-            this.updateTimerDisplay();
-            if (this.timeLeft <= 0) {
+            timeLeft--;
+            updateDisplay();
+            if (timeLeft <= 0) {
                 clearInterval(this.timer);
-                this.checkAnswer(null); // Timeout
+                this.checkAnswer(null);
             }
         }, 1000);
     }
 
-    updateTimerDisplay() {
-        const mins = Math.floor(this.timeLeft / 60);
-        const secs = this.timeLeft % 60;
-        this.elements.timer.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        if (this.timeLeft < 10) this.elements.timer.style.color = 'var(--accent-red)';
-        else this.elements.timer.style.color = 'var(--accent-blue)';
-    }
-
-    checkAnswer(selectedKey) {
+    checkAnswer(selected) {
         clearInterval(this.timer);
         const q = this.currentQuestions[this.currentIndex];
+        const isCorrect = selected === q.answer;
         const duration = (Date.now() - this.startTime) / 1000;
         this.times.push(duration);
 
-        const isCorrect = selectedKey === q.answer;
         if (isCorrect) this.score++;
 
-        // Tracking topics
-        if (!this.weakTopics[q.topic]) this.weakTopics[q.topic] = { count: 0, failed: 0 };
-        this.weakTopics[q.topic].count++;
-        if (!isCorrect) this.weakTopics[q.topic].failed++;
+        // Track weak topics
+        if (!isCorrect) {
+            this.weakTopics[q.topic] = (this.weakTopics[q.topic] || 0) + 1;
+        }
 
-        // Reveal answers visually
-        document.querySelectorAll('.option-btn').forEach(btn => {
+        // Reveal Correct/Wrong
+        const btns = this.elements.optionsContainer.querySelectorAll('.option-btn');
+        btns.forEach(btn => {
             btn.disabled = true;
-            const key = btn.querySelector('.label').textContent;
+            const key = btn.querySelector('.opt-key').textContent;
             if (key === q.answer) btn.classList.add('correct');
-            if (key === selectedKey && !isCorrect) btn.classList.add('wrong');
+            if (key === selected && !isCorrect) btn.classList.add('wrong');
         });
 
-        // Show feedback
-        this.elements.feedbackStatus.textContent = isCorrect ? 'Correct! ✓' : (selectedKey === null ? 'Time Out! ✗' : 'Incorrect ✗');
+        // Deep Bilingual Feedback
+        this.elements.feedbackStatus.textContent = isCorrect ? 'Mastery Verified ✓' : 'Conceptual Gap Detected ✗';
         this.elements.feedbackStatus.style.color = isCorrect ? 'var(--accent-green)' : 'var(--accent-red)';
 
-        this.elements.correctAnswerText.textContent = `${q.answer}) ${q.options[q.answer]}`;
-        this.elements.whyCorrect.textContent = `${q.explanation_en} ${q.explanation_ru}`;
-        this.elements.whyWrong.textContent = isCorrect ? 'N/A' : `${q.wrong_en} ${q.wrong_ru}`;
-        this.elements.memoryHint.textContent = q.hint;
+        // Use specifically drafted feedback for the selected option if available
+        this.elements.feedbackEn.textContent = q.explanations[selected] || q.explanations[q.answer];
+        this.elements.feedbackRu.textContent = q.explanations_ru[selected] || q.explanations_ru[q.answer];
+        this.elements.feedbackHint.textContent = q.hint;
 
         this.elements.feedbackPanel.classList.remove('hidden');
     }
@@ -179,93 +206,67 @@ class ExamTrainer {
         if (this.currentIndex < this.currentQuestions.length) {
             this.loadQuestion();
         } else {
-            this.finishQuiz();
+            this.finishModule();
         }
     }
 
-    finishQuiz() {
+    finishModule() {
         this.showScreen('report');
-        const percent = Math.round((this.score / this.currentQuestions.length) * 100);
-        this.elements.finalScore.textContent = `${this.score}/${this.currentQuestions.length}`;
-        this.elements.finalPercent.textContent = `${percent}%`;
+        const total = this.currentQuestions.length;
+        const percent = Math.round((this.score / total) * 100);
 
+        this.elements.reportScore.textContent = `${this.score}/${total}`;
+        this.elements.reportPercent.textContent = `${percent}%`;
         const avgTime = Math.round(this.times.reduce((a, b) => a + b, 0) / this.times.length);
-        this.elements.avgTime.textContent = `${avgTime}s`;
+        this.elements.reportTime.textContent = `${avgTime}s avg`;
 
-        // Topic Analysis
+        // Update Leaderboard
+        this.updateLeaderboard(percent);
+
+        // Update User History
+        this.user.attempts++;
+        if (percent > this.user.bestAccuracy) this.user.bestAccuracy = percent;
+        localStorage.setItem('ml_coach_user', JSON.stringify(this.user));
+        this.updateUserStats();
+
+        // Weak Topics
         this.elements.weakTopicsList.innerHTML = '';
-        this.elements.strongTopicsList.innerHTML = '';
-
-        Object.entries(this.weakTopics).forEach(([topic, stats]) => {
-            const failRate = Math.round((stats.failed / stats.count) * 100);
+        Object.entries(this.weakTopics).forEach(([topic, count]) => {
             const li = document.createElement('li');
-            li.innerHTML = `<span>${topic}</span> <span>${100 - failRate}% Accuracy</span>`;
-
-            if (failRate > 30) {
-                this.elements.weakTopicsList.appendChild(li);
-            } else if (failRate === 0) {
-                this.elements.strongTopicsList.appendChild(li);
-            }
+            li.textContent = `${topic} (${count} errors)`;
+            this.elements.weakTopicsList.appendChild(li);
         });
-
-        // Save history
-        const run = {
-            date: new Date().toISOString(),
-            score: this.score,
-            total: this.currentQuestions.length,
-            mode: this.mode
-        };
-        this.history.push(run);
-        localStorage.setItem('ml_trainer_history', JSON.stringify(this.history));
-
-        this.updateGlobalDashboard();
-        this.calculateTrend();
     }
 
-    calculateTrend() {
-        if (this.history.length < 2) {
-            this.elements.trend.textContent = 'Stable';
-            return;
-        }
-        const last = this.history[this.history.length - 1];
-        const prev = this.history[this.history.length - 2];
-        const diff = (last.score / last.total) - (prev.score / prev.total);
-
-        if (diff > 0.05) this.elements.trend.textContent = 'Improving';
-        else if (diff < -0.05) this.elements.trend.textContent = 'Declining';
-        else this.elements.trend.textContent = 'Stable';
+    updateLeaderboard(score) {
+        const entry = { name: this.user.name, score, date: new Date().toLocaleDateString() };
+        this.leaderboard.push(entry);
+        this.leaderboard.sort((a, b) => b.score - a.score);
+        this.leaderboard = this.leaderboard.slice(0, 5);
+        localStorage.setItem('ml_coach_leaderboard', JSON.stringify(this.leaderboard));
+        this.updateLeaderboardDisplay();
     }
 
-    retryWeak() {
-        const weakQuestionIds = this.currentQuestions
-            .filter(q => this.weakTopics[q.topic].failed > 0)
-            .map(q => q.id);
-
-        if (weakQuestionIds.length === 0) {
-            alert("No weak topics found! Great job.");
-            return;
-        }
-
-        this.currentIndex = 0;
-        this.score = 0;
-        this.currentQuestions = this.questions.filter(q => weakQuestionIds.includes(q.id));
-        this.elements.totalQuestions.textContent = this.currentQuestions.length;
-        this.showScreen('quiz');
-        this.loadQuestion();
+    updateLeaderboardDisplay() {
+        this.elements.leaderboard.innerHTML = this.leaderboard.map((e, i) => `
+            <li>
+                <span class="rank">#${i + 1}</span>
+                <span class="name">${e.name}</span>
+                <span class="score highlight">${e.score}%</span>
+            </li>
+        `).join('') || '<li class="empty">No ranks data yet.</li>';
     }
 
-    showScreen(screenId) {
-        Object.values(this.screens).forEach(s => s.classList.add('hidden'));
-        this.screens[screenId].classList.remove('hidden');
+    updateUserStats() {
+        document.getElementById('user-attempts').textContent = this.user.attempts;
+        document.getElementById('user-accuracy').textContent = `${this.user.bestAccuracy}%`;
     }
 
     shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
+        return array.sort(() => Math.random() - 0.5);
     }
 }
 
-new ExamTrainer();
+document.addEventListener('DOMContentLoaded', () => {
+    window.coach = new CoachHub();
+});
