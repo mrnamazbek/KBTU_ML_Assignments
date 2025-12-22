@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 ML Exam Trainer | KBTU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Sora:wght@400;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="dark-mode">
+    <div id="app" class="glass-container">
+        <!-- Home Screen -->
+        <section id="home-screen" class="screen">
+            <header>
+                <div class="badge">ML ENGINEERING</div>
+                <h1>Interactive <span class="highlight">Exam Trainer</span></h1>
+                <p class="subtitle">Master concepts through spaced repetition and active recall.</p>
+            </header>
+
+            <div class="mode-selector">
+                <button class="mode-card" data-mode="quiz">
+                    <div class="icon">📝</div>
+                    <h3>Quiz Practice</h3>
+                    <p>Standard pace, deep feedback.</p>
+                    <span class="timer-info">No Timer</span>
+                </button>
+                <button class="mode-card highlight-card" data-mode="midterm">
+                    <div class="icon">⚡</div>
+                    <h3>Midterm Mode</h3>
+                    <p>Core definitions & relations.</p>
+                    <span class="timer-info">45s / question</span>
+                </button>
+                <button class="mode-card" data-mode="final">
+                    <div class="icon">🏆</div>
+                    <h3>Final Exam</h3>
+                    <p>Applied reasoning & logic.</p>
+                    <span class="timer-info">60-75s / question</span>
+                </button>
+            </div>
+
+            <div class="stats-mini-dashboard">
+                <div class="stat-item">
+                    <span class="label">Questions Attempted</span>
+                    <span class="value" id="total-attempts">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Mastery Level</span>
+                    <span class="value" id="mastery-level">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Interface -->
+        <section id="quiz-screen" class="screen hidden">
+            <nav class="quiz-nav">
+                <button id="exit-btn" class="icon-btn">✕</button>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div id="timer" class="timer">00:45</div>
+            </nav>
+
+            <div class="question-container">
+                <div class="meta">Question <span id="current-index">1</span> of <span id="total-questions">15</span>
+                </div>
+                <h2 id="question-text">Loading question...</h2>
+                <div id="options-grid" class="options-grid">
+                    <!-- Options injected by JS -->
+                </div>
+            </div>
+
+            <div id="feedback-panel" class="feedback-panel hidden">
+                <div class="feedback-header">
+                    <span id="feedback-status" class="status">Correct! ✓</span>
+                </div>
+                <div class="feedback-content">
+                    <div class="explanation-group">
+                        <h4>Mandatory Format</h4>
+                        <p><strong>Correct Answer:</strong> <span id="correct-answer-text"></span></p>
+                        <p><strong>Why it is correct:</strong> <span id="why-correct"></span></p>
+                        <p><strong>Why your answer is wrong:</strong> <span id="why-wrong"></span></p>
+                        <div class="hint-box">
+                            <strong>Remember this:</strong> <span id="memory-hint"></span>
+                        </div>
+                    </div>
+                </div>
+                <button id="next-btn" class="primary-btn">Next Question →</button>
+            </div>
+        </section>
+
+        <!-- Report Screen -->
+        <section id="report-screen" class="screen hidden">
+            <h1>Quiz <span class="highlight">Completion</span></h1>
+            <div class="report-grid">
+                <div class="report-card main-score">
+                    <span class="label">Final Score</span>
+                    <span class="value" id="final-score">0/0</span>
+                    <span class="percentage" id="final-percent">0%</span>
+                </div>
+                <div class="report-card">
+                    <span class="label">Trend</span>
+                    <span class="value" id="trend">Stable</span>
+                </div>
+                <div class="report-card">
+                    <span class="label">Avg Time</span>
+                    <span class="value" id="avg-time">0s</span>
+                </div>
+            </div>
+
+            <div class="topics-analysis">
+                <div class="topic-list">
+                    <h3>Weak Topics (Review these)</h3>
+                    <ul id="weak-topics"></ul>
+                </div>
+                <div class="topic-list">
+                    <h3>Strong Topics (Mastered)</h3>
+                    <ul id="strong-topics"></ul>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="retry-weak-btn" class="secondary-btn">Retry Weak Questions</button>
+                <button id="home-btn" class="primary-btn">Back to Home</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="bg-glow top-right"></div>
+    <div class="bg-glow bottom-left"></div>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
