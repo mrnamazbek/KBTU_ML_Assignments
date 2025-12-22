@@ -30,7 +30,6 @@ class CoachHub {
             welcomeText: document.getElementById('welcome-text'),
             leaderboard: document.getElementById('leaderboard'),
             moduleCards: document.querySelectorAll('.module-card'),
-            themeToggle: document.getElementById('theme-toggle'),
 
             // Quiz UI
             questionText: document.getElementById('question-text'),
@@ -65,7 +64,6 @@ class CoachHub {
             this.register();
         });
 
-        this.elements.themeToggle.addEventListener('click', () => this.toggleTheme());
 
         this.elements.moduleCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -191,7 +189,7 @@ class CoachHub {
 
         // Deep Bilingual Feedback
         this.elements.feedbackStatus.textContent = isCorrect ? 'Mastery Verified ✓' : 'Conceptual Gap Detected ✗';
-        this.elements.feedbackStatus.style.color = isCorrect ? 'var(--accent-green)' : 'var(--accent-red)';
+        this.elements.feedbackStatus.style.color = isCorrect ? '#10B981' : '#EF4444';
 
         // Use specifically drafted feedback for the selected option if available
         this.elements.feedbackEn.textContent = q.explanations[selected] || q.explanations[q.answer];

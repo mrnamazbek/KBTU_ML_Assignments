@@ -4,92 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Coach | KBTU Hub</title>
+    <title>ML Coach Hub | Precision Learning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div id="app" class="grid-container">
-        <!-- Hero Section (Global) -->
-        <header style="grid-column: span 12;">
-            <div
-                style="letter-spacing: 0.3em; font-size: 0.8rem; margin-bottom: 10px; color: var(--primary); font-weight: 700;">
-                PROTOCOL: ACTIVE</div>
-            <h1>ML Exam <span class="highlight">Coach</span></h1>
-            <p class="subtitle">Bilingual depth, pedagogical analysis, and real-world diagnostics for KBTU ML students.
-            </p>
+        <!-- Hero Section -->
+        <header>
+            <span class="protocol-tag">Coach Protocol Active</span>
+            <h1>ML Coaching <span class="highlight">Hub</span></h1>
+            <p class="text-secondary">High-precision diagnostics and bilingual learning analysis.</p>
         </header>
 
         <!-- Registration Screen -->
         <section id="registration-screen" class="glass-panel" style="grid-column: span 6; grid-column-start: 4;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <span style="font-size: 2rem;">👤</span>
-                <h3>Welcome, Researcher</h3>
-                <p>Register your identity to access the coach protocol.</p>
+            <div class="text-center">
+                <h3>Identify Yourself</h3>
+                <p class="text-secondary">Data persistence requires a profile signature.</p>
             </div>
             <form id="registration-form" class="auth-form">
                 <input type="text" id="user-name" placeholder="First Name" required>
                 <input type="text" id="user-surname" placeholder="Last Name" required>
-                <button type="submit" class="primary-btn">Initialize Protocol →</button>
+                <button type="submit" class="primary-btn">Initialize Hub →</button>
             </form>
         </section>
 
-        <!-- Home Screen (Module Hub) -->
+        <!-- Home Screen -->
         <section id="home-screen" class="screen hidden" style="grid-column: span 12;">
             <div class="grid-container" style="width: 100%; padding: 0;">
                 <div style="grid-column: span 8;">
-                    <div class="glass-panel welcome-card"
-                        style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);">
-                        <div>
-                            <h2 id="welcome-text">Hello, <span class="highlight">Senior</span></h2>
-                            <p>Select your training module for today.</p>
-                        </div>
-                        <div style="font-size: 3rem;">🎓</div>
+                    <div class="glass-panel" style="margin-bottom: var(--space-m);">
+                        <h2 id="welcome-text">Hello, <span class="highlight">Researcher</span></h2>
+                        <p class="text-secondary">Select your objective to begin analyzed training.</p>
                     </div>
 
-                    <div class="module-selection-grid">
+                    <div class="module-grid">
                         <div class="module-card glass-panel" data-module="midterm">
                             <div class="icon">🛡️</div>
                             <h3>Midterm Protocol</h3>
-                            <p>Full 50 Question Set</p>
+                            <p class="text-secondary">50 Questions • Full Coverage</p>
                         </div>
                         <div class="module-card glass-panel" data-module="quiz2">
                             <div class="icon">📝</div>
                             <h3>Module 2</h3>
-                            <p>Data Encoding</p>
+                            <p class="text-secondary">Data Encoding & Logic</p>
                         </div>
                         <div class="module-card glass-panel" data-module="quiz3">
                             <div class="icon">🔍</div>
                             <h3>Module 3</h3>
-                            <p>Scaling & Kernels</p>
+                            <p class="text-secondary">Scaling & Kernels</p>
                         </div>
                         <div class="module-card glass-panel" data-module="quiz4">
                             <div class="icon">⚡</div>
                             <h3>Module 4</h3>
-                            <p>Pipelines Logic</p>
+                            <p class="text-secondary">Pipelines & Automation</p>
                         </div>
                         <div class="module-card glass-panel" data-module="bonus">
                             <div class="icon">💎</div>
                             <h3>Bonus Set</h3>
-                            <p>Advanced Validation</p>
+                            <p class="text-secondary">Validation Masterclass</p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Leaderboard & Stats -->
                 <aside class="glass-panel" style="grid-column: span 4;">
-                    <h3>🏆 Global Rankings</h3>
+                    <h3>Elite Mastery</h3>
                     <ul id="leaderboard" class="ranking-list">
-                        <li class="empty">Scanning records...</li>
+                        <li class="empty text-secondary">No records found.</li>
                     </ul>
-                    <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
-                    <h3>📈 Your Stats</h3>
-                    <div class="mastery-stats" style="font-weight: 600; color: var(--text-secondary);">
-                        <p>Attempts: <span id="user-attempts" style="color: var(--primary);">0</span></p>
-                        <p>Best Accuracy: <span id="user-accuracy" style="color: var(--primary);">0%</span></p>
+                    <hr style="margin: var(--space-m) 0; border: none; border-top: 1px solid var(--glass-border);">
+                    <h3>Your Performance</h3>
+                    <div style="color: var(--text-secondary); font-weight: 500;">
+                        <p>Total Attempts: <span id="user-attempts" class="highlight">0</span></p>
+                        <p>Best Accuracy: <span id="user-accuracy" class="highlight">0%</span></p>
                     </div>
                 </aside>
             </div>
@@ -97,68 +89,69 @@
 
         <!-- Quiz Interface -->
         <section id="quiz-screen" class="screen hidden" style="grid-column: span 10; grid-column-start: 2;">
-            <nav class="quiz-nav glass-panel">
+            <nav class="quiz-nav">
                 <button id="exit-btn" class="secondary-btn">✕ Exit</button>
-                <div class="progress-bar-wrapper">
-                    <div id="progress-bar"></div>
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-fill"></div>
                 </div>
-                <div id="timer" class="timer-display">00:00</div>
+                <div id="timer" class="timer">00:00</div>
             </nav>
 
-            <div class="question-box glass-panel">
-                <div style="font-size: 0.8rem; font-weight: 800; color: var(--primary); margin-bottom: 10px;">
-                    MODULE: <span id="module-name">UNKNOWN</span> | QUESTION <span id="current-count">1</span>
-                </div>
-                <h2 id="question-text">Question loading...</h2>
-                <div id="options-container" class="options-grid">
-                    <!-- Options -->
+            <div class="question-area glass-panel">
+                <p class="protocol-tag" style="margin-bottom: 5px;">Module: <span id="module-name">UNKNOWN</span> |
+                    Index: <span id="current-count">1</span></p>
+                <h2 id="question-text">Loading question structure...</h2>
+                <div id="options-container" class="options-list">
+                    <!-- Dynamic Options -->
                 </div>
             </div>
 
-            <div id="feedback-panel" class="glass-panel hidden">
-                <h3 id="feedback-status" style="margin-bottom: 20px;">Analysis</h3>
+            <!-- Analysis Panel -->
+            <div id="feedback-panel" class="glass-panel feedback-panel hidden">
+                <h3 id="feedback-status">Analysis Report</h3>
                 <div class="feedback-grid">
-                    <div class="explanation-col">
-                        <h4>English Analysis</h4>
-                        <p id="feedback-en"></p>
+                    <div class="feedback-col">
+                        <h4>English Context</h4>
+                        <p id="feedback-en" class="text-secondary"></p>
                     </div>
-                    <div class="explanation-col">
-                        <h4>Russian Analysis</h4>
-                        <p id="feedback-ru"></p>
+                    <div class="feedback-col">
+                        <h4>Russian Context</h4>
+                        <p id="feedback-ru" class="text-secondary"></p>
                     </div>
                 </div>
-                <div class="hint-strip">
-                    <strong>MEMORIZE:</strong> <span id="feedback-hint"></span>
+                <div class="hint-box">
+                    <strong>Memo Tip:</strong> <span id="feedback-hint"></span>
                 </div>
-                <button id="next-btn" class="primary-btn" style="margin-top: 30px; width: 100%;">Continue Mission
-                    →</button>
+                <button id="next-btn" class="primary-btn" style="margin-top: var(--space-l); width: 100%;">Next
+                    Objective →</button>
             </div>
         </section>
 
         <!-- Final Report -->
-        <section id="report-screen" class="screen hidden glass-panel"
-            style="grid-column: span 8; grid-column-start: 3; text-align: center;">
-            <h1 style="font-size: 2.5rem;">Mission <span class="highlight">Complete</span></h1>
-            <p>Your performance data has been uploaded to the protocol.</p>
+        <section id="report-screen" class="screen hidden glass-panel text-center"
+            style="grid-column: span 8; grid-column-start: 3;">
+            <h1 class="highlight">Assessment Complete</h1>
+            <p class="text-secondary">Historical data updated in protocol records.</p>
 
-            <div style="display: flex; justify-content: center; gap: 50px; margin: 40px 0;">
+            <div style="display: flex; justify-content: center; gap: var(--space-xl); margin: var(--space-xl) 0;">
                 <div>
-                    <div id="report-score" style="font-size: 3rem; font-weight: 800; color: var(--primary);">0/0</div>
-                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">SCORE</div>
+                    <div id="report-score" style="font-size: 3rem; font-weight: 700;">0/0</div>
+                    <p class="protocol-tag">Score</p>
                 </div>
                 <div>
-                    <div id="report-percent" style="font-size: 3rem; font-weight: 800; color: var(--primary);">0%</div>
-                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">ACCURACY</div>
+                    <div id="report-percent" style="font-size: 3rem; font-weight: 700; color: var(--accent-blue);">0%
+                    </div>
+                    <p class="protocol-tag">Accuracy</p>
                 </div>
             </div>
 
             <div class="glass-panel"
-                style="background: #F1F5F9; text-align: left; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                <h4 style="margin-bottom: 15px;">⚠️ Weak Topics Detected</h4>
-                <ul id="weak-topics-list" style="padding-left: 20px;"></ul>
+                style="text-align: left; padding: var(--space-m); background: rgba(255, 255, 255, 0.03);">
+                <h3 style="font-size: 1rem; color: var(--error);">⚠️ Conceptual Weaknesses</h3>
+                <ul id="weak-topics-list" style="padding-left: var(--space-m); margin-top: var(--space-s);"></ul>
             </div>
 
-            <button id="home-btn" class="primary-btn">Return to Dashboard</button>
+            <button id="home-btn" class="primary-btn" style="margin-top: var(--space-m);">Return to Dashboard</button>
         </section>
     </div>
 
