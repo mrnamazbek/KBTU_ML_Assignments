@@ -1,0 +1,594 @@
+Bounus_Quiz_ML_Group_2
+Hi, Елдос. When you submit this form, the owner will see your name and email address.
+Required
+1.Surname (In English)
+Enter your answer
+2.Name (In English)
+Enter your answer
+3.Fill in the missing function used to compute RMSE in scikit-learn:
+from sklearn.metrics import _______________________
+lin_rmse = root_mean_squared_error(y_true, y_pred)
+(1 Point)
+
+Enter your answer
+4.What is the key advantage of using k-fold cross-validation?
+(1 Point)
+
+
+It eliminates bias completely
+
+It always improves accuracy
+
+It provides a more reliable estimate of generalization performance
+
+It reduces the number of features
+5.In regression, scikit-learn uses negative error metrics in cross_val_score because higher scores are considered better.
+(1 Point)
+
+
+True
+
+False
+6.What is the main limitation of GridSearchCV compared to RandomizedSearchCV?
+(1 Point)
+
+
+It cannot use cross-validation
+
+It only works for classification
+
+It becomes computationally expensive with many hyperparameters
+
+It cannot tune pipelines
+7.Which sklearn tool can automatically remove low-importance features based on a fitted model?
+(1 Point)
+
+
+PCA
+
+SelectKBest
+
+SelectFromModel
+
+VarianceThreshold
+
+
+
+Quiz_4_ML_Group_2
+Hi, Елдос. When you submit this form, the owner will see your name and email address.
+Required
+1.Name (English)
+Yeldos
+2.Surname (English)
+Anarbayev
+3.Why is log transformation applied to features with heavy-tailed distributions?
+(1 Point)
+
+
+To increase variance
+
+To improve categorical encoding
+
+To reduce skewness and stabilize variance
+
+To create more outliers
+4.Complete:
+log_pipeline = make_pipeline( SimpleImputer(strategy="median"),    FunctionTransformer(np.log, feature_names_out="one-to-one"),    ________)
+
+(1 Point)
+
+Enter your answer
+5.The purpose of ratio-based feature engineering (e.g., bedrooms_ratio) is to:
+(1 Point)
+
+
+Reduce memory usage
+
+Remove multicollinearity
+
+Reduce dimensionality
+
+Create more meaningful, normalized relationships between features
+6.FunctionTransformer requires the input and output to have the same shape.
+(1 Point)
+
+
+True
+
+False
+7.RBF similarity always outputs values between 0 and 1.
+(1 Point)
+
+
+True
+
+False
+8.What does this code do?
+num_pipeline = make_pipeline(SimpleImputer(), StandardScaler())
+
+
+(1 Point)
+
+
+Creates categorical pipeline
+
+Creates cluster features
+
+Trains a model
+
+Creates a two-step numeric preprocessing pipeline
+9.Why does ratio_name function exist?
+(1 Point)
+
+
+To perform ratio
+
+To name the ratio name in ratio operation
+
+To supply output feature names to FunctionTransformer
+
+To be added in ratio pipline 
+10.When using sample_weight in KMeans inside ClusterSimilarity, which sample property typically receives more weight in the housing example?
+(1 Point)
+
+
+Houses with larger populations
+
+Houses with more rooms
+
+Houses closer to the ocean
+
+Houses with higher median house values
+11.KMeans-based cluster similarity features can help linear models capture nonlinear geographic patterns.
+(1 Point)
+
+
+True
+
+False
+12.In a pipeline, which steps must be transformers?
+(1 Point)
+
+
+All steps
+
+Only the final step
+
+All steps except the last
+
+None of them
+
+Quiz_3_ML_Group_2
+Hi, Елдос. When you submit this form, the owner will see your name and email address.
+Required
+1.Surname (English)
+Enter your answer
+2.Name (English)
+Enter your answer
+3.Which transformation is most appropriate for heavy-tailed features like population?
+(1 Point)
+
+
+One-hot encoding
+
+Log transformation
+
+MinMax scaling only
+
+Label encoding
+4.Which scaler may distort data if the distribution contains outliers?
+(1 Point)
+
+
+MinMaxScaler
+
+Normalizer
+
+RobustScaler
+
+StandardScaler
+5.Fill the blank to get scaled feature names:
+scaler = StandardScaler()scaler.fit(X)scaler.____________________
+(1 Point)
+
+Enter your answer
+6.QuestionMinMaxScaler always produces values exactly between -1 and 1.
+(1 Point)
+
+
+True
+
+False
+7.Given RBF formula exp(−γ(x−m)^2), what happens if γ is very small?
+(1 Point)
+
+
+Narrow peak
+
+Negative similarity
+
+Very wide similarity curve
+
+Similarity becomes exactly 1
+8.A custom class that should support hyperparameter tuning must:
+(1 Point)
+
+
+Use BaseEstimator
+
+Override fit_transform()
+
+Implement inverse_fit()
+
+Inherit from Pipeline
+9.ClusterSimilarity transformer returns RBF similarities to KMeans cluster centers.
+(1 Point)
+
+
+True
+
+False
+10.In the ClusterSimilarity transformer, the fit() method:
+(1 Point)
+
+
+Computes RBF similarities
+
+Fits a KMeans model
+
+Scales numerical features
+
+Performs one-hot encoding
+11.Fill in the missing code to apply MinMax scaling to the training set only:scaler = MinMaxScaler()
+scaler.fit(train_data)test_
+scaled = scaler.________(test_data)
+
+(1 Point)
+
+Enter your answer
+12.Standardization using StandardScaler() transforms data using:
+(1 Point)
+
+
+(x−min(x))​/(max(x)−min(x))
+
+x​/max(x)
+
+(x−μ)​/σ
+
+log(x)
+
+
+Quiz_2_ML_Group_2
+Hi, Елдос. When you submit this form, the owner will see your name and email address.
+1.What happens if you use pd.get_dummies() on test data containing unseen categories?
+(1 Point)
+
+
+It throws an error
+
+It creates new columns for the unseen categories
+
+It assigns NaN
+
+It ignores the categories
+2.What happens if you use OneHotEncoder(handle_unknown="ignore") on unseen categories?
+(1 Point)
+
+
+Errors
+
+Drops the sample
+
+Returns an all-zero row for that sample
+
+Guesses the closest category
+3.Fill in the code to compute the correlation matrix:
+corr_matrix = housing.corr(numeric_only=________)
+
+(1 Point)
+
+Enter your answer
+4.Which technique best handles heavily right-skewed features such as population?
+(1 Point)
+
+
+StandardScaler
+
+Log transformation
+
+One-hot encoding
+
+Normalization
+5.Bucketization always improves model performance.
+(1 Point)
+
+
+True
+
+False
+6.Which of the following is TRUE about RBF features?
+(1 Point)
+
+
+They add linearity to the model
+
+They help linear models approximate nonlinear patterns
+
+They remove outliers
+
+They reduce dimensionality
+7.What does a small gamma (γ → 0) imply for the RBF curve?
+(1 Point)
+
+
+Very narrow peak
+
+Very wide spread
+
+No peak
+
+Random noise
+8.In an RBF kernel, the parameter γ (gamma) controls:
+(1 Point)
+
+
+The distance between cluster centers
+
+How quickly similarity decays with distance
+
+The learning rate of the model
+
+The number of samples
+9.Which feature scaling method preserves outliers but rescales the feature to zero mean and unit variance?
+(1 Point)
+
+
+MinMaxScaler
+
+StandardScaler
+
+Normalizer
+
+Log scaling
+10.Fill in the missing argument name in OneHotEncoder:
+encoder = OneHotEncoder(________ = False)
+
+(1 Point)
+
+Enter your answer
+
+----- Midterm exam line ------
+
+Midterm Exam
+1. The main goal of hyperparameter tuning is to: (1 Point)
+    - [ ]  Change data labels
+    - [ ]  Add new features
+    - [ ]  Measure bias and variance
+    - [ ]  Optimize model settings before training
+2. In the California Housing analysis, the correlation between median_income and median_house_value was found to be the strongest among all features. This suggests that:
+    - [ ]  Median income is an irrelevant predictor and should be dropped
+    - [ ]  Median income has a strong linear relationship with house prices and should be a key feature in the model
+    - [ ]  The model should use only categorical features to avoid bias
+    - [ ]  Correlation automatically implies causation in housing prices
+3. Create a histogram for all numerical attributes in a DataFrame named housing: housing.__()
+    
+    Answer: hist
+    
+4. The argument c in matplotlib's scatter plot defines:
+    - [ ]  Column name for labels
+    - [ ]  Data point color mapping
+    - [ ]  Chart background
+    - [ ]  Axis color
+5. In markdown, # before text represents:
+    - [ ]  Bold text
+    - [ ]  A hyperlink
+    - [ ]  A heading
+    - [ ]  Italics
+6. Association Rule Learning is best described as:
+    - [ ]  Finding co-occurrence patterns among items
+    - [ ]  Predicting future values
+    - [ ]  Identifying anomalies in data
+    - [ ]  Clustering customers into groups
+7. The MEA measures:
+    - [ ]  Average squared error
+    - [ ]  Average absolute difference between predictions and true values
+    - [ ]  Variance of predictions
+    - [ ]  Root of squared residuals
+8. In supervised learning, the model never uses labeled data during training.
+    - [ ]  True
+    - [ ]  False
+9. In the example of detecting tumors in brain scans, which ML task is used?
+    - [ ]  Semantic segmentation
+    - [ ]  Regression
+    - [ ]  Reinforcement learning
+    - [ ]  Clustering
+10. To calculate correlation matrix in pandas: corr_matrix = df.___()
+    
+    Answer: corr
+    
+11. The scatterplot matrix for feature relationships is created using:
+    - [ ]  sns.pairplot()
+    - [ ]  plt.show()
+    - [ ]  df.plot_matrix()
+    - [ ]  np.plot()
+12. Which of the following pairs correctly matches ML types? ( (1 Point)
+    - [ ]  Image classification → Supervised learning
+    - [ ]  Spam filtering → Unsupervised learning
+    - [ ]  Market segmentation → Reinforcement learning
+    - [ ]  Speech recognition → Clustering
+13. In the happiness vs. GDP example, the cost function measures:
+    - [ ]  How bad the model's predictions are
+    - [ ]  How accurate the model is
+    - [ ]  The number of parameters
+    - [ ]  The number of samples
+14.  Create a scatter plot in matplotlib: plt.__(x, y)
+    
+    Answer: scatter
+    
+15. Underfitting occurs when: (1 Point)
+    - [ ]  The model is too simple to capture data patterns
+    - [ ]  The model is too complex
+    - [ ]  The training data is perfect
+    - [ ]  The test data is missing
+16. According to Tom Mitchell's definition, a program learns from experience E with respect to task T and performance measure P if: 7 (1 Point)
+    - [ ]  Its accuracy decreases over time
+    - [ ]  Its performance on T improves with experience E
+    - [ ]  It uses labeled data
+    - [ ]  It has high computational power
+17. In supervised learning, the algorithm tries to find patterns without any target labels. (1 Point)
+    - [ ]  True
+    - [ ]  False
+18. Which of the following is an example of supervised learning? (1 Point)
+    - [ ]  Predicting house prices using labeled data
+    - [ ]  Grouping customers by purchase behavior
+    - [ ]  Detecting anomalies in network traffic
+    - [ ]  Dimensionality reduction using PCA
+19. The k in k-Nearest Neighbors represents: C (1 Point)
+    - [ ]  Model complexity
+    - [ ]  Number of features
+    - [ ]  Number of clusters
+    - [ ]  Number of neighbors used for prediction
+20. Batch learning means: (1 Point)
+    - [ ]  Model learns continuously from new data
+    - [ ]  Model learns from data in one large step
+    - [ ]  Model deletes old data
+    - [ ]  Model cannot be retrained
+21. To fit a k-Nearest Neighbors model:
+from sclearn.heighbors import ___
+    knn = ____()
+    knn.fit(X_train, y_train)
+22. The accuracy of a kNN model in scikit-learn can be computed using: 07 (1 Point)
+    - [ ]  knn.fit()
+    - [ ]  knn.test()
+    - [ ]  knn.validate()
+    - [ ]  knn.score()
+23.  The scatterplot matrix for feature relationships is created using: C (1 Point) 
+    - [ ]  sns.pairplot()
+    - [ ]  plt.show()
+    - [ ]  df.plot_matrix()
+    - [ ]  np.plot()
+24. Unsupervised learning is mainly used to: (1 Point)
+    - [ ]  Predict known outcomes
+    - [ ]  Classify labeled data
+    - [ ]  Train models with rewards and penalties
+    - [ ]  Find hidden patterns without labels
+25. The main advantage of using pipelines is: [7 (1 Point)
+    - [ ]  Reproducible and organized workflows
+    - [ ]  Removing model dependencies
+    - [ ]  Training models faster
+    - [ ]  Manual data processing
+26. To load the Iris dataset from scikit-learn, use:
+from sklearn.datasets import ___
+    iris = ____()
+27. Which of the following metrics penalizes large errors more heavily? (1 Point)
+    - [ ]  RMSE
+    - [ ]  MAE
+    - [ ]  R2
+    - [ ]  Accuracy
+28. In stratified sampling, each stratum must appear in the sample in the same proportion as in the population. [ (1 Point)
+    - [ ]  True
+    - [ ]  False
+29. During stratified sampling in the California Housing dataset, an additional column income_cat was created using pd.cut(). The main reason for creating this column was to:
+    - [ ]  Detect missing income values
+    - [ ]  Convert numerical income data into categorical bins for proportional sampling
+    - [ ]  Simplify feature correlations during visualization
+    - [ ]  Improve model accuracy by scaling features
+30. The describe() method in pandas provides: [4 (1 Point)
+    - [ ]  Only column names
+    - [ ]  Graphical visualization
+    - [ ]  Basic summary statistics
+    - [ ]  Correlation coefficients
+31. Predict using a trained linear regression model: y_pred = model.___(X_test)
+    
+    Answer: predict
+    
+32. Machine Learning is best described as:
+    - [ ]  Writing explicit rules for computers to follow
+    - [ ]  Programming computers to learn from data
+    - [ ]  Using statistical formulas only
+    - [ ]  Manually labeling all data
+33. Which library provides the KNeighborsClassifier? (1 Point)
+    - [ ]  sklearn.metrics
+    - [ ]  numpy
+    - [ ]  pandas
+    - [ ]  sklearn.neighbors
+34. To make a prediction for a new sample X_new:
+prediction = knn.___(X_new)
+35. Overfitting means the model performs well on the training set but poorly on unseen (1 Point)
+    - [ ]  True
+    - [ ]  False
+36. The command model.fit(X, y) in scikit-learn:
+    - [ ]  Trains the model on data
+    - [ ]  Tests the model
+    - [ ]  Displays accuracy
+    - [ ]  Splits data
+37. In supervised learning, the label set is also called the: (1 Point)
+    - [ ]  Predictor
+    - [ ]  Feature
+    - [ ]  Target
+    - [ ]  Variable
+38. In regression, the target variable is typically: (1 Point)
+    - [ ]  A category
+    - [ ]  A label index
+    - [ ]  A continuous numeric value
+    - [ ]  A probability
+39. In Python's scikit-learn, which function is used to split data into training and test sets?
+    - [ ]  split_data()
+    - [ ]  train_test_split()
+    - [ ]  divide_set()
+    - [ ]  random_split()
+40. To divide the dataset into training and testing parts:
+from sklearn.model_selection import ___
+    X_train, X_test, y_train, y_test = ____(iris['data'], iris['target'], random_state=0)
+41. Overfitting occurs when:
+    - [ ]  The dataset is too large
+    - [ ]  The model is too simple
+    - [ ]  The learning rate is zero
+    - [ ]  The model is too complex and fits noise
+42. In the Life Satisfaction vs GDP regression task, if the Linear Regression model systematically underpredicts life satisfaction for countries with very high GDP, this most likely indicates: (1 Point)
+    - [ ]  Overfitting to low-GDP samples
+
+
+- [ ]  Non-linearity in the relationship not captured by the model
+    - [ ]  High variance error
+    - [ ]  Proper linearity assumption holding
+43. Which function in pandas displays the first few rows of a DataFrame?
+    - [ ]  df.show()
+    - [ ]  df.top()
+    - [ ]  df.head()
+    - [ ]  df.print()
+44. Online learning is best suited for: (1 Point)
+    - [ ]  Static datasets
+    - [ ]  Streaming or constantly updating data
+    - [ ]  Small datasets only
+    - [ ]  Models that never change
+45. Stratified sampling ensures that: (1 Point)
+    - [ ]  Training and test sets contain random data only
+    - [ ]  Missing data are imputed
+    - [ ]  Features are normalized
+    - [ ]  Each subgroup is represented proportionally in train/test sets
+46. Import the Linear Regression model: 
+    
+    from sklearn.linear_model import ___ (1 Point)
+    
+47. Which markdown syntax correctly inserts an image? (1 Point)
+    - [ ]  <img>
+    - [ ]  [image](url)
+    - [ ]  # Image
+    - [ ]  ![text](url)
+48. What is the purpose of random_state=42 in train_test_split)? (1 Point)
+    - [ ]  To ensure results can be reproduced
+    - [ ]  To improve accuracy
+    - [ ]  To remove randomness
+    - [ ]  To perform stratified sampling
+49. In supervised learning, features are also known as:
+    - [ ]  Targets
+    - [ ]  Labels
+    - [ ]  Attributes or inputs
+    - [ ]  Predictions
+50. In the California Housing dataset, the target variable represents: (1 Point)
+    - [ ]  Median house value
+    - [ ]  Population size
+    - [ ]  Ocean proximity
+    - [ ]  Median income
