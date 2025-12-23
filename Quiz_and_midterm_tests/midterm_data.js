@@ -176,8 +176,139 @@ export const quizDatabase = {
                 D: "KMeans — это кластеризатор, а не стандартный скейлер."
             },
             hint: "Scaling after transforming. / Масштабирование после трансформации."
+        },
+
+        // Added from your @Quizzes dump (Practice Mode until you provide answer key)
+        {
+            id: "q4_3",
+            topic: "Feature Engineering",
+            question: "The purpose of ratio-based feature engineering (e.g., bedrooms_ratio) is to:",
+            options: {
+                A: "Reduce memory usage",
+                B: "Remove multicollinearity",
+                C: "Reduce dimensionality",
+                D: "Create more meaningful, normalized relationships between features"
+            },
+            answer: null,
+            explanations: {
+                A: "Practice mode: add your official explanation/answer key.",
+                B: "Practice mode: add your official explanation/answer key.",
+                C: "Practice mode: add your official explanation/answer key.",
+                D: "Practice mode: add your official explanation/answer key."
+            },
+            explanations_ru: {
+                A: "Режим практики: добавьте официальный ключ/объяснение.",
+                B: "Режим практики: добавьте официальный ключ/объяснение.",
+                C: "Режим практики: добавьте официальный ключ/объяснение.",
+                D: "Режим практики: добавьте официальный ключ/объяснение."
+            },
+            hint: "Ratios often capture relative relationships better than raw counts. / Отношения часто лучше отражают смысл, чем абсолютные значения."
+        },
+        {
+            id: "q4_4",
+            topic: "Transformers",
+            question: "FunctionTransformer requires the input and output to have the same shape.",
+            options: {
+                A: "True",
+                B: "False",
+                C: "Depends on estimator",
+                D: "Only for categorical data"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Think about how pipelines pass arrays between steps. / Подумайте, как пайплайн передаёт массивы между шагами."
+        },
+        {
+            id: "q4_5",
+            topic: "RBF",
+            question: "RBF similarity always outputs values between 0 and 1.",
+            options: {
+                A: "True",
+                B: "False",
+                C: "Only when normalized",
+                D: "Only for classification"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "RBF uses exp(−γ⋅distance²). / RBF использует exp(−γ⋅distance²)."
+        },
+        {
+            id: "q4_6",
+            topic: "Pipelines",
+            question: "What does this code do? num_pipeline = make_pipeline(SimpleImputer(), StandardScaler())",
+            options: {
+                A: "Creates categorical pipeline",
+                B: "Creates cluster features",
+                C: "Trains a model",
+                D: "Creates a two-step numeric preprocessing pipeline"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Impute then scale. / Импьютация, затем масштабирование."
+        },
+        {
+            id: "q4_7",
+            topic: "Feature Names",
+            question: "Why does ratio_name function exist?",
+            options: {
+                A: "To perform ratio",
+                B: "To name the ratio name in ratio operation",
+                C: "To supply output feature names to FunctionTransformer",
+                D: "To be added in ratio pipeline"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Some transformers need feature_names_out helpers. / Некоторые трансформеры требуют имена выходных признаков."
+        },
+        {
+            id: "q4_8",
+            topic: "Clustering",
+            question: "When using sample_weight in KMeans inside ClusterSimilarity, which sample property typically receives more weight in the housing example?",
+            options: {
+                A: "Houses with larger populations",
+                B: "Houses with more rooms",
+                C: "Houses closer to the ocean",
+                D: "Houses with higher median house values"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Sample weights emphasize certain examples during fitting. / Веса усиливают вклад отдельных примеров."
+        },
+        {
+            id: "q4_9",
+            topic: "Clustering",
+            question: "KMeans-based cluster similarity features can help linear models capture nonlinear geographic patterns.",
+            options: {
+                A: "True",
+                B: "False",
+                C: "Only for trees",
+                D: "Only with OneHotEncoder"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Nonlinear patterns can be approximated by engineered features. / Нелинейность можно поймать через новые признаки."
+        },
+        {
+            id: "q4_10",
+            topic: "Pipelines",
+            question: "In a pipeline, which steps must be transformers?",
+            options: {
+                A: "All steps",
+                B: "Only the final step",
+                C: "All steps except the last",
+                D: "None of them"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Think: intermediate steps must transform X. / Промежуточные шаги должны преобразовывать X."
         }
-        // ... more ...
     ],
     quiz3: [
         {
@@ -229,6 +360,113 @@ export const quizDatabase = {
                 D: "StandardScaler подвержен влиянию выбросов, но менее сильно, чем MinMax."
             },
             hint: "The min and max are sensitive points. / Минимум и максимум — чувствительные точки."
+        },
+
+        // Added from your @Quizzes dump (Practice Mode)
+        {
+            id: "q3_3",
+            topic: "Scikit-Learn",
+            question: "Fill the blank to get scaled feature names: scaler = StandardScaler(); scaler.fit(X); scaler.____________________",
+            options: {
+                A: "get_feature_names_out()",
+                B: "feature_names()",
+                C: "get_columns()",
+                D: "names_out()"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Modern sklearn exposes a standard feature-name API. / В sklearn есть стандартный API для имён признаков."
+        },
+        {
+            id: "q3_4",
+            topic: "Preprocessing",
+            question: "MinMaxScaler always produces values exactly between -1 and 1.",
+            options: { A: "True", B: "False", C: "Only with outliers", D: "Only after StandardScaler" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "MinMaxScaler typically maps to [0, 1] by default. / По умолчанию MinMaxScaler часто даёт [0, 1]."
+        },
+        {
+            id: "q3_5",
+            topic: "RBF",
+            question: "Given RBF formula exp(−γ(x−m)^2), what happens if γ is very small?",
+            options: {
+                A: "Narrow peak",
+                B: "Negative similarity",
+                C: "Very wide similarity curve",
+                D: "Similarity becomes exactly 1"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Gamma controls decay speed. / Гамма контролирует скорость убывания."
+        },
+        {
+            id: "q3_6",
+            topic: "API Design",
+            question: "A custom class that should support hyperparameter tuning must:",
+            options: {
+                A: "Use BaseEstimator",
+                B: "Override fit_transform()",
+                C: "Implement inverse_fit()",
+                D: "Inherit from Pipeline"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Sklearn relies on get_params/set_params. / Sklearn использует get_params/set_params."
+        },
+        {
+            id: "q3_7",
+            topic: "Clustering",
+            question: "ClusterSimilarity transformer returns RBF similarities to KMeans cluster centers.",
+            options: { A: "True", B: "False", C: "Only for classification", D: "Only with PCA" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "It’s a feature-engineering idea: distance → similarity. / Идея: расстояние → схожесть."
+        },
+        {
+            id: "q3_8",
+            topic: "Clustering",
+            question: "In the ClusterSimilarity transformer, the fit() method:",
+            options: {
+                A: "Computes RBF similarities",
+                B: "Fits a KMeans model",
+                C: "Scales numerical features",
+                D: "Performs one-hot encoding"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "fit() usually learns parameters; transform() applies. / fit() учит параметры; transform() применяет."
+        },
+        {
+            id: "q3_9",
+            topic: "Preprocessing",
+            question: "Fill in the missing code to apply MinMax scaling: scaler = MinMaxScaler(); scaler.fit(train_data); scaled = scaler.________(test_data)",
+            options: { A: "transform", B: "predict", C: "fit", D: "score" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "fit on train, apply to test. / fit на train, применить на test."
+        },
+        {
+            id: "q3_10",
+            topic: "Preprocessing",
+            question: "Standardization using StandardScaler() transforms data using:",
+            options: {
+                A: "(x−min(x))/(max(x)−min(x))",
+                B: "x/max(x)",
+                C: "(x−μ)/σ",
+                D: "log(x)"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "StandardScaler uses mean and std. / StandardScaler использует среднее и std."
         }
     ],
     quiz2: [
@@ -281,6 +519,98 @@ export const quizDatabase = {
                 D: "Он не делает никаких предположений о значении."
             },
             hint: "Safe fallback. / Безопасный запасной вариант."
+        },
+
+        // Added from your @Quizzes dump (Practice Mode)
+        {
+            id: "q2_3",
+            topic: "Pandas",
+            question: "Fill in the code to compute the correlation matrix: corr_matrix = housing.corr(numeric_only=________)",
+            options: { A: "True", B: "False", C: "None", D: "All" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "pandas corr can restrict to numeric columns. / corr может считать только числовые столбцы."
+        },
+        {
+            id: "q2_4",
+            topic: "Feature Engineering",
+            question: "Which technique best handles heavily right-skewed features such as population?",
+            options: { A: "StandardScaler", B: "Log transformation", C: "One-hot encoding", D: "Normalization" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Think about shrinking extreme values. / Подумайте о “сжатии” больших значений."
+        },
+        {
+            id: "q2_5",
+            topic: "General",
+            question: "Bucketization always improves model performance.",
+            options: { A: "True", B: "False", C: "Only for trees", D: "Only for linear models" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Binning can help or hurt depending on model/data. / Биннинг может как помочь, так и навредить."
+        },
+        {
+            id: "q2_6",
+            topic: "RBF",
+            question: "Which of the following is TRUE about RBF features?",
+            options: {
+                A: "They add linearity to the model",
+                B: "They help linear models approximate nonlinear patterns",
+                C: "They remove outliers",
+                D: "They reduce dimensionality"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "RBF features can be a nonlinear basis expansion. / RBF-признаки — это нелинейное расширение базиса."
+        },
+        {
+            id: "q2_7",
+            topic: "RBF",
+            question: "What does a small gamma (γ → 0) imply for the RBF curve?",
+            options: { A: "Very narrow peak", B: "Very wide spread", C: "No peak", D: "Random noise" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Small gamma means slow decay. / Маленькая гамма — медленное убывание."
+        },
+        {
+            id: "q2_8",
+            topic: "RBF",
+            question: "In an RBF kernel, the parameter γ (gamma) controls:",
+            options: {
+                A: "The distance between cluster centers",
+                B: "How quickly similarity decays with distance",
+                C: "The learning rate of the model",
+                D: "The number of samples"
+            },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Gamma controls locality of similarity. / Гамма контролирует “локальность” схожести."
+        },
+        {
+            id: "q2_9",
+            topic: "Preprocessing",
+            question: "Which feature scaling method preserves outliers but rescales the feature to zero mean and unit variance?",
+            options: { A: "MinMaxScaler", B: "StandardScaler", C: "Normalizer", D: "Log scaling" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "Zero mean + unit variance is the key phrase. / Ключ: нулевое среднее и единичное std."
+        },
+        {
+            id: "q2_10",
+            topic: "Scikit-Learn",
+            question: "Fill in the missing argument name in OneHotEncoder: encoder = OneHotEncoder(________ = False)",
+            options: { A: "sparse", B: "sparse_output", C: "handle_unknown", D: "drop" },
+            answer: null,
+            explanations: { A: "Practice mode.", B: "Practice mode.", C: "Practice mode.", D: "Practice mode." },
+            explanations_ru: { A: "Режим практики.", B: "Режим практики.", C: "Режим практики.", D: "Режим практики." },
+            hint: "sklearn changed this parameter name in newer versions. / В новых версиях sklearn имя параметра менялось."
         }
     ],
     midterm: [
