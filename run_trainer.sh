@@ -1,9 +1,9 @@
 #!/bin/bash
-# Script to run ML Exam Trainer locally
 
-PORT=3000
-DIRECTORY="/Users/namazbekbekzhanov/AntigravityProjects/KBTU_ML/Quiz_and_midterm_tests"
+# Navigate to the quiz folder where index.html and app.js reside
+# shellcheck disable=SC2164
+cd Quiz_and_midterm_tests
 
-echo "🚀 Starting ML Exam Trainer on http://localhost:$PORT"
-cd "$DIRECTORY"
-python3 -m http.server $PORT
+echo "🚀 Starting ML Coach Hub on http://localhost:3000"
+# Run the server from within that directory
+python3 -m http.server 3000
